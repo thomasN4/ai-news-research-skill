@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# Assemble the installable skill bundles in dist/ from skills/.
+#
+# Each bundle gets the agent's own SKILL.md plus the shared github-sync.md. The digest
+# is deliberately not bundled — both skills fetch it from the raw URL — so a digest
+# push never invalidates these zips. Rerun this only when a SKILL.md or github-sync.md
+# changes.
+#
+# The archive root must be a folder named ai-news-research, matching the `name:` in the
+# frontmatter, or Claude's skill uploader rejects it.
+
+set -euo pipefail
+
+repo="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+mkdir -p "$repo/dist"
+
+for agent in claude grok; do
+  stage="$(mktemp -d)"
+  trap 'rm -rf "$stage"' EXIT
+
+  mkdir -p "$stage/ai-news-research/references"
+  cp "$repo/skills/$agent/ai-news-research/SKILL.md" "$stage/ai-news-research/"
+  cp "$repo/skills/common/references/github-sync.md" "$stage/ai-news-research/references/"
+
+  # zip records mtimes, so without this a rebuild produces different bytes for
+  # identical content and dirties dist/ on every run. Fixed stamp = reproducible zip.
+  find "$stage" -exec touch -t 202001010000 {} +
+
+  out="$repo/dist/ai-news-research-$agent.zip"
+  rm -f "$out"                       # rebuild from scratch so deletions don't linger
+  ( cd "$stage" && zip -qrX "$out" ai-news-research )
+
+  rm -rf "$stage"
+  trap - EXIT
+  printf 'built %s (%s)\n' "${out#"$repo"/}" "$(du -h "$out" | cut -f1)"
+done

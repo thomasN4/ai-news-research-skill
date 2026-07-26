@@ -1,0 +1,8 @@
+# the real token, and any variant of it
+.env
+.env.*
+!.env.example
+
+# github-sync.md has you save push.py locally
+__pycache__/
+*.pyc
