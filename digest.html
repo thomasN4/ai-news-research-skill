@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <!--
   KNOWLEDGE PATCH for the ai-news-research skill.
-  Coverage: 2026-02-01 through 2026-07-24. Compiled 2026-07-25 (v3; v2 compiled 2026-07-24; v1 ended 2026-07-09).
+  Coverage: 2026-02-01 through 2026-07-24. Compiled 2026-07-27 (v4; v3 compiled 2026-07-25; v2 2026-07-24; v1 ended 2026-07-09).
+  v4 is a backfill only — the coverage window is unchanged from v3.
   Primary lens: Zvi Mowshowitz's "Don't Worry About the Vase" (thezvi.substack.com),
   cross-checked against primary sources (lab announcements) and wire/tech press.
 
@@ -17,8 +18,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="coverage-start" content="2026-02-01">
 <meta name="coverage-end" content="2026-07-24">
-<meta name="compiled" content="2026-07-25">
-<title>AI Developments · Feb–Jul 2026 · Knowledge Patch (v3)</title>
+<meta name="compiled" content="2026-07-27">
+<title>AI Developments · Feb–Jul 2026 · Knowledge Patch (v4)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -84,7 +85,7 @@
 <div class="wrap">
 <header>
   <button class="theme-toggle" id="themeToggle" aria-label="Switch color theme">THEME: AUTO</button>
-  <div class="patch-label">PATCH ai-2026-digest v3 · covers 2026-02-01 → 2026-07-24 · compiled 2026-07-25</div>
+  <div class="patch-label">PATCH ai-2026-digest v4 · covers 2026-02-01 → 2026-07-24 · compiled 2026-07-27</div>
   <h1>AI Developments, February–July 2026</h1>
   <p class="sub">A knowledge patch covering the gap after the model's training cutoff. Primary lens:
   Zvi Mowshowitz's <em>Don't Worry About the Vase</em>, cross-checked against lab announcements and press.
@@ -162,7 +163,13 @@
 
 <section class="month">
   <h2>May</h2>
-  <p class="mood">A relative lull — the last one for a while.</p>
+  <p class="mood">Quiet on models, loud on infrastructure — the last lull before June.</p>
+  <div class="ev">
+    <div class="head"><span class="date">May 6 → 20</span><h3>Anthropic leases all of Colossus 1 from SpaceX; the S-1 reveals the price</h3><span class="chip c">CONFIRMED</span></div>
+    <p>Anthropic contracted for the entire compute capacity of Colossus 1 in Memphis — more than 300 MW — from a direct competitor, xAI having been folded into SpaceX earlier in the year. Anthropic framed it as capacity for paid Claude Pro and Max subscribers, and separately expressed interest in developing multi-gigawatt compute in space. The price surfaced two weeks later in SpaceX's S-1: $1.25B per month through May 2029, roughly $15B a year and over $40B across the contract, at a reduced rate through the May–June ramp, with either side able to exit on 90 days' notice. SpaceX described the arrangement as monetizing unused capacity in its infrastructure and said it expected to sign similar contracts. An amended S-1 on June 1 put the agreements at approximately 325,000 Nvidia GPUs across Colossus and Colossus II, Anthropic having expanded onto GB200 capacity in Colossus 2 through June.</p>
+    <p>It is the largest disclosed compute contract of the period and the clearest public price signal yet for frontier-scale capacity — worth carrying into any reasoning about either company's economics. Two details are reported rather than filed: the GPU count at Colossus 1 alone (widely given as ~220,000) and xAI's own utilization of the site before the lease (put at ~11% by <em>The Information</em>).</p>
+    <div class="src"><a href="https://www.cnbc.com/2026/05/06/anthropic-spacex-data-center-capacity.html">CNBC (announcement)</a><a href="https://techcrunch.com/2026/05/20/anthropic-will-pay-xai-1-25-billion-per-month-for-compute/">TechCrunch (S-1 terms)</a><a href="https://www.axios.com/2026/05/20/anthropic-spacex-compute">Axios</a><a href="https://www.datacenterdynamics.com/en/news/spacex-ipo-filing-reveals-anthropic-set-to-pay-musks-firm-125bn-a-month-to-rent-xai-data-center-space/">DCD</a></div>
+  </div>
   <div class="ev">
     <div class="head"><span class="date">May 22</span><h3>Gemini 3.5 Flash</h3><span class="chip c">CONFIRMED</span></div>
     <p>Well-received for its speed class; Zvi's take was that Google again had a model worth consideration.</p>
@@ -349,10 +356,11 @@
   <p>February–March coverage remains sparse relative to April–July outside the Anthropic–DoW story. Google's spring beyond Gemini 3.5 Flash is under-covered (an Antigravity 2.0 agent platform was reportedly announced at I/O 2026).</p>
   <p><strong>Resolved / backfilled in v2:</strong> Grok 4.5 (July 8) now has independent benchmarks and is upgraded to CONFIRMED. Claude Sonnet 5 shipped June 30, 2026 and was missing from v1's June section entirely.</p>
   <p><strong>Backfilled in v3:</strong> The Anthropic–Department of War dispute, carried in v2 as a single vague “friction” item misdated to Mar–Apr, is restored to its actual Feb 24–27 chronology and upgraded to CONFIRMED on Anthropic's own statement, CNN and Fox reporting, and two government-contracts law firm advisories. Still unresolved: the outcome of Anthropic's suit over the supply-chain-risk designation, and whether the six-month agency wind-down (expiring around late August 2026) was enforced, softened, or overtaken by events.</p>
-  <p><strong>Open at v2 compile time:</strong> Opus 5's benchmark claims are all first-party and unreplicated. Kimi K3's open weights were promised for July 27 — unknown whether that held, and the Qwen 3.8 preview may have reset the open-weight picture immediately after. The White House decision on Chinese open models was live, not closed. The identity and status of OpenAI's unreleased "Galaxy"-class model is inferred, not stated. Whether any incident-reporting legislation advanced past announcement is unknown. When in doubt, search rather than trust this file.</p>
+  <p><strong>Backfilled in v4:</strong> The Anthropic–SpaceX Colossus 1 lease (announced May 6, priced in the S-1 on May 20) was missing from v1–v3 entirely, and May was described as a lull on the strength of that omission. It is restored as CONFIRMED on CNBC, TechCrunch, Axios, Reuters and DCD reporting of SpaceX's SEC filing. Note that this file's coverage of compute and infrastructure deals is thinner than its coverage of model releases generally — the July AMD and Meta items are REPORTED one-liners, and other 2026 compute agreements (Amazon, Google, Microsoft) are not covered at all.</p>
+  <p><strong>Still open at v4 compile time:</strong> Opus 5's benchmark claims are all first-party and unreplicated. Kimi K3's open weights were promised for July 27 — unknown whether that held, and the Qwen 3.8 preview may have reset the open-weight picture immediately after. The White House decision on Chinese open models was live, not closed. The identity and status of OpenAI's unreleased "Galaxy"-class model is inferred, not stated. Whether any incident-reporting legislation advanced past announcement is unknown. When in doubt, search rather than trust this file.</p>
 </section>
 
-<footer>ai-news-research skill · knowledge patch v3 · regenerate when &gt;2 weeks stale or after major events</footer>
+<footer>ai-news-research skill · knowledge patch v4 · regenerate when &gt;2 weeks stale or after major events</footer>
 </div>
 <script>
   // Cycles auto → light → dark. "Auto" defers to prefers-color-scheme; the explicit
