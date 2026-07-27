@@ -18,12 +18,19 @@ Canonical copy, shared with Grok:
 - Digest: `https://raw.githubusercontent.com/thomasN4/ai-news-research-skill/main/digest.html`
 - Manifest: `https://raw.githubusercontent.com/thomasN4/ai-news-research-skill/main/manifest.json`
 
+**How to fetch.** Use bash for both files — `curl -sL <url>` — and not `web_fetch`. `web_fetch`
+only accepts URLs that already appeared in the conversation (in a search result, or pasted by the
+user); a URL that appears only in this file does not qualify, so it rejects both URLs above with a
+`PERMISSIONS_ERROR` without ever making a request. That is a tool restriction, not an outage:
+`raw.githubusercontent.com` is reachable from the sandbox. `digest.html` is ~46 KB of which most is
+CSS, so strip the markup before reading rather than dumping the file into context.
+
 **Read order:**
 
 1. **Fetch the manifest first.** It is a few hundred bytes and carries `coverage_start`, `coverage_end`, `updated_at`, `updated_by`, and `revision`. If `coverage_end` predates the period the question is about, skip the digest and go straight to searching.
 2. **Otherwise fetch `digest.html`** and use it as the baseline — it usually saves several searches. Verify anything tagged REPORTED before repeating it, and re-verify anything the user's question makes load-bearing.
 3. **For anything after `coverage_end`**, search the web. The digest only tells you where the story left off.
-4. **If the fetch fails**, retry once. If it still fails, say plainly that the shared digest is unreachable and work from web search alone — and do not reason about or forecast from post-cutoff events out of memory. Nothing is bundled here as a fallback, by design: an unavailable digest is a known gap you can tell the user about, while a remembered one is a fabricated baseline you can't.
+4. **If the fetch fails**, retry once — and check first that the failure is a real one. A `PERMISSIONS_ERROR` from `web_fetch` means the wrong tool was used; retry with curl before concluding anything. If curl itself fails, say plainly that the shared digest is unreachable and work from web search alone — and do not reason about or forecast from post-cutoff events out of memory. Nothing is bundled here as a fallback, by design: an unavailable digest is a known gap you can tell the user about, while a remembered one is a fabricated baseline you can't.
 
 **Regenerating.** When the digest is more than ~2 weeks stale, or research turns up major events past `coverage_end`, offer to update it. Check `updated_at` in the manifest first — Grok may have pushed recently, in which case pull before writing. Preserve the instructional comment block, update the `coverage-end` meta tag and the visible patch label, and **append new months rather than rewriting existing ones**. Keep the CONFIRMED/REPORTED tagging honest; a regenerated digest full of unverified claims is worse than a stale one. Upgrade REPORTED items to CONFIRMED when corroboration has appeared, and note in the gaps box what was resolved or backfilled. Then bump `revision`, set `updated_by` to `claude`, and update `coverage_end` and `updated_at` in the manifest.
 
