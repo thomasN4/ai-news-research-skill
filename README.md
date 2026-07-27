@@ -22,8 +22,9 @@ reasons with it. The digest is the interface between them.
 │   └── grok/ai-news-research/SKILL.md
 ├── scripts/build-skills.sh           skills/ → dist/
 └── dist/
-    ├── ai-news-research-claude.zip   what you upload to Claude
-    └── ai-news-research-grok.zip     download container for the two Grok files
+    ├── ai-news-research-claude.skill  what you upload to Claude (.skill, not .zip —
+    │                                  it's what shows the "save skill" button)
+    └── ai-news-research-grok.zip      download container for the two Grok files
 ```
 
 | File | Purpose |

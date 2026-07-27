@@ -30,6 +30,10 @@ only writes do.
 bash scripts/build-skills.sh   # only for the middle row
 ```
 
+The Claude bundle is built as `.skill`, the Grok one as `.zip`. That is not cosmetic: the web
+app only offers its "save skill" button for a `.skill` file, and Grok has no uploader at all.
+If you hand a rebuilt bundle back in chat, hand back the `.skill`.
+
 `revision` in `manifest.json` tracks digest content only. `coverage_end` moves only when new
 dates are genuinely covered — a backfill *inside* the existing window bumps `revision` and
 leaves `coverage_end` where it is.

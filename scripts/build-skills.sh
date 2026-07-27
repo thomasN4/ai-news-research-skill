@@ -26,7 +26,18 @@ for agent in claude grok; do
   # identical content and dirties dist/ on every run. Fixed stamp = reproducible zip.
   find "$stage" -exec touch -t 202001010000 {} +
 
-  out="$repo/dist/ai-news-research-$agent.zip"
+  # Extension is per-agent and load-bearing. Claude's bundle is a skill: the web app
+  # only offers its "save skill" button for a `.skill` file, including when an agent
+  # hands the bundle back in-chat at the end of the github-sync.md procedure. Grok has
+  # no skill uploader — its bundle is just a download container the user unzips — so
+  # naming it `.skill` would imply an install path that doesn't exist. Both are
+  # ordinary zip archives; only the name differs.
+  case "$agent" in
+    claude) ext=skill ;;
+    *)      ext=zip   ;;
+  esac
+
+  out="$repo/dist/ai-news-research-$agent.$ext"
   rm -f "$out"                       # rebuild from scratch so deletions don't linger
   # zip -r walks the staging directory in filesystem order, which differs between
   # machines. That reordered entries — and so changed the archive bytes — even with
