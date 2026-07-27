@@ -16,6 +16,29 @@ curl -sL https://raw.githubusercontent.com/thomasN4/ai-news-research-skill/main/
 `raw.githubusercontent.com` serves a CDN copy that can lag a push by up to ~5 minutes.
 If you just wrote and need to confirm, read back through the API instead:
 `https://api.github.com/repos/thomasN4/ai-news-research-skill/contents/digest.html`.
+Send the token on that read even though the repo is public — see the rate limit below.
+
+If you need the repo itself rather than the two shared files — editing a `SKILL.md`,
+rebuilding `dist/` — take the whole tree in one request instead of walking the API:
+
+```bash
+git clone https://github.com/thomasN4/ai-news-research-skill.git
+# or, if git isn't available:
+curl -sL https://codeload.github.com/thomasN4/ai-news-research-skill/tar.gz/refs/heads/main | tar xz
+```
+
+### The unauthenticated rate limit
+
+`api.github.com` allows 60 requests/hour without a token, counted against the calling IP.
+On a hosted sandbox that IP is shared with every other session on the host, so the budget
+is often already spent before your first call. It surfaces as a **403** whose body reads
+`API rate limit exceeded for <ip>` — the same status a scope failure returns, which is why
+it is worth recognizing by body rather than by code.
+
+Authenticated requests get 5000/hour against the token, so once you have `GH_TOKEN`, send
+it on every API read, not just the writes. Before you have it, stay off the API entirely:
+`raw.githubusercontent.com` and `codeload.github.com` are separate infrastructure and this
+limit does not apply to them.
 
 ## Token handling
 
@@ -171,6 +194,7 @@ case the other agent pushed while the PR sat open.
 | Symptom | Cause |
 | --- | --- |
 | connection error, auth never reached | sandbox egress blocked — see the section above |
+| `API rate limit exceeded for <ip>` | no token was sent — see *The unauthenticated rate limit* |
 | `Resource not accessible by personal access token` | the token lacks that permission |
 | `Permission to ... denied to <user>` from `git push` | same thing, surfaced by git |
 
