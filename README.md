@@ -13,6 +13,7 @@ reasons with it. The digest is the interface between them.
 ├── digest.html                       the digest — the only copy, fetched live by both skills
 ├── manifest.json                     cheap freshness check; read this before the digest
 ├── INSTALL.md
+├── AGENTS.md                         conventions for agents working on this repo
 ├── .env.example                      how to mint the write token
 ├── skills/
 │   ├── common/references/
@@ -44,8 +45,9 @@ reasons with it. The digest is the interface between them.
 - `revision` is bumped on every write and `updated_by` set to the agent that wrote it (`claude`
   or `grok`). `git log --oneline digest.html` is the audit trail.
 
-Writes go through the GitHub contents API using the current blob `sha` as concurrency control —
-a 409 means the other agent pushed first, so re-pull, re-apply, retry. Full procedure in
+Grok writes straight to `main` through the GitHub contents API, using the current blob `sha` as
+concurrency control — a 409 means the other agent pushed first, so re-pull, re-apply, retry.
+Claude works on a branch and opens a PR, where that guard doesn't apply. Full procedure in
 [`skills/common/references/github-sync.md`](skills/common/references/github-sync.md). Reads need
 no auth; only writes need the token from `.env`.
 

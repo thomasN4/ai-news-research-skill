@@ -28,7 +28,11 @@ for agent in claude grok; do
 
   out="$repo/dist/ai-news-research-$agent.zip"
   rm -f "$out"                       # rebuild from scratch so deletions don't linger
-  ( cd "$stage" && zip -qrX "$out" ai-news-research )
+  # zip -r walks the staging directory in filesystem order, which differs between
+  # machines. That reordered entries — and so changed the archive bytes — even with
+  # mtimes pinned, dirtying dist/ for whoever rebuilt next. Feed zip an explicitly
+  # sorted list instead; -@ reads paths from stdin and preserves the order given.
+  ( cd "$stage" && find ai-news-research | LC_ALL=C sort | zip -qX "$out" -@ )
 
   rm -rf "$stage"
   trap - EXIT
