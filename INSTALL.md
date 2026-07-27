@@ -23,7 +23,7 @@ that entirely if you just want the read side working.
 
 ## Claude (web app)
 
-1. Download **[`dist/ai-news-research-claude.zip`](dist/ai-news-research-claude.zip)** — use the
+1. Download **[`dist/ai-news-research-claude.skill`](dist/ai-news-research-claude.skill)** — use the
    "Download raw file" button, not "Save page as".
 2. In Claude, go to **Customize → Skills**, click **+**, then **+ Create skill → Upload a skill**.
    (On older builds this lives at **Settings → Capabilities → Skills**.)
@@ -40,8 +40,11 @@ digest, before answering.
   `name:` field in the frontmatter. That's why both bundles use the same inner folder name even
   though the zip filenames differ. If you re-zip by hand, zip the *folder*, not its contents:
   `zip -r out.zip ai-news-research`.
-- **The uploader wants a `.zip`.** A byte-identical copy named `.skill` may not even be
-  selectable in the file picker. Rename it if so — nothing inside changes.
+- **The Claude bundle is named `.skill`.** That extension is what makes the web app's "save
+  skill" button appear, including when Claude hands you a rebuilt bundle in-chat after running
+  the `github-sync.md` procedure. If the **Upload a skill** file picker won't select it, rename
+  your copy to `.zip` — it is an ordinary zip archive and nothing inside changes. The Grok
+  bundle stays `.zip`: Grok has no skill uploader, so there is no button for it to trigger.
 - **Don't install both bundles into one Claude account.** They share the inner folder name and
   the skill name, so the second collides with the first. The Grok bundle is for Grok.
 

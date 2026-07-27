@@ -188,6 +188,13 @@ curl -sS -X DELETE -H "Authorization: Bearer $GH_TOKEN" \
   https://api.github.com/repos/thomasN4/ai-news-research-skill/git/refs/heads/probe
 ```
 
+## Handing a rebuilt bundle back
+
+If the same session also rebuilt `dist/` — because a `SKILL.md` or this file changed — give the
+user `dist/ai-news-research-claude.skill`, not a `.zip` copy. The web app shows its "save skill"
+button based on that extension, so a renamed archive silently loses the one-click install even
+though the bytes are identical.
+
 ## Ordering and consistency
 
 - **Digest first, manifest second.** The manifest is what the other agent checks to
