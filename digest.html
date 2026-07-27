@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <!--
   KNOWLEDGE PATCH for the ai-news-research skill.
-  Coverage: 2026-02-01 through 2026-07-24. Compiled 2026-07-27 (v4; v3 compiled 2026-07-25; v2 2026-07-24; v1 ended 2026-07-09).
-  v4 is a backfill only — the coverage window is unchanged from v3.
+  Coverage: 2026-02-01 through 2026-07-27. Compiled 2026-07-27 (v5; v4 same day, backfill only; v3 2026-07-25; v2 2026-07-24; v1 ended 2026-07-09).
   Primary lens: Zvi Mowshowitz's "Don't Worry About the Vase" (thezvi.substack.com),
   cross-checked against primary sources (lab announcements) and wire/tech press.
 
@@ -17,9 +16,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="coverage-start" content="2026-02-01">
-<meta name="coverage-end" content="2026-07-24">
+<meta name="coverage-end" content="2026-07-27">
 <meta name="compiled" content="2026-07-27">
-<title>AI Developments · Feb–Jul 2026 · Knowledge Patch (v4)</title>
+<title>AI Developments · Feb–Jul 2026 · Knowledge Patch (v5)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -85,7 +84,7 @@
 <div class="wrap">
 <header>
   <button class="theme-toggle" id="themeToggle" aria-label="Switch color theme">THEME: AUTO</button>
-  <div class="patch-label">PATCH ai-2026-digest v4 · covers 2026-02-01 → 2026-07-24 · compiled 2026-07-27</div>
+  <div class="patch-label">PATCH ai-2026-digest v5 · covers 2026-02-01 → 2026-07-27 · compiled 2026-07-27</div>
   <h1>AI Developments, February–July 2026</h1>
   <p class="sub">A knowledge patch covering the gap after the model's training cutoff. Primary lens:
   Zvi Mowshowitz's <em>Don't Worry About the Vase</em>, cross-checked against lab announcements and press.
@@ -342,6 +341,29 @@
   </div>
 </section>
 
+<section class="month">
+  <h2>July (25th–27th)</h2>
+  <p class="mood">The open-weight fight goes public, and Opus 5's numbers stop being Anthropic's own.</p>
+  <div class="ev">
+    <div class="head"><span class="date">Jul 24 → 26</span><h3>"Open Weights and American AI Leadership": Huang's first X post, and the signatures that followed</h3><span class="chip c">CONFIRMED</span></div>
+    <p>Jensen Huang made the first post of his life on X on July 24 to share a coalition letter arguing that open-weight models are infrastructure for American leadership — that they strengthen safety and cybersecurity, accelerate diffusion, and enable sovereignty — and warning Washington against premature restriction, by analogy to the open-source software fight of the 1980s. It launched with 25 signatories including NVIDIA, Microsoft, Meta, Palantir and Y Combinator. Within roughly a day the list had doubled to about 50, now including OpenAI and Google. <strong>Amazon and Anthropic did not sign</strong>, which is conspicuous on both counts: Amazon is Anthropic's largest investor, and Anthropic has spent the period arguing the opposite case about downloadable models with strong cyber capability.</p>
+    <p>The letter is the industry's answer to the Washington deliberations of July 20–22 above, and the two should be read together. Reported but single-sourced: that Musk replied endorsing it.</p>
+    <div class="src"><a href="https://fortune.com/2026/07/24/jensen-huang-open-source-letter-nvidia-kimi/">Fortune</a><a href="https://www.forbes.com/sites/sandycarter/2026/07/25/huangs-open-weights-letter-doubled-to-50-without-amazon-and-anthropic/">Forbes (signatures doubling)</a></div>
+  </div>
+  <div class="ev">
+    <div class="head"><span class="date">Jul 25–26</span><h3>Opus 5 gets outside numbers, and they mostly hold</h3><span class="chip c">CONFIRMED</span></div>
+    <p>The launch-day claims in the July 24 item above were entirely first-party. Independent results now exist and broadly corroborate them, with two asterisks worth keeping. Artificial Analysis puts Opus 5 (max) at 61 on its Intelligence Index — effectively tied with Fable 5 at 60, ahead of GPT-5.6 Sol at 59, Kimi K3 at 57 and Opus 4.8 at 56 — and first on both GDPval-AA v2 (1861 Elo, +114 over Fable 5) and its AA-Briefcase agentic knowledge-work benchmark (1720 Elo, +146), at a lower cost per task. Epoch AI is less emphatic: 159 on its capability index against 161 for Fable 5, the two even on software engineering. CodeRabbit measured review precision up from 35.2% to 39.3% while counting roughly four times as many nitpicks.</p>
+    <p>The asterisks: Artificial Analysis states it supported Anthropic in evaluating the model <em>ahead of</em> release, and several of the headline Elo figures appear in Anthropic's own system card, so this is a pre-briefed evaluation rather than arms-length replication. And AA's own model page describes Opus 5 as notably slow (~53 tok/s) and very verbose — 100M tokens to complete the index against a 63M median — which is invisible in the Elo numbers and shows up in real cost. Cognition and Zapier reported gains too, but both are launch partners.</p>
+    <div class="src"><a href="https://artificialanalysis.ai/articles/opus-5">Artificial Analysis</a><a href="https://artificialanalysis.ai/models/claude-opus-5">AA model page</a><a href="https://yellow.com/news/experts-split-claude-opus-5-independent-tests">Epoch / CodeRabbit roundup</a></div>
+  </div>
+  <div class="ev">
+    <div class="head"><span class="date">Jul 27</span><h3>Kimi K3's open weights: the date arrives, the drop is unconfirmed</h3><span class="chip r">REPORTED</span></div>
+    <p>Moonshot's commitment is "open weights <em>by</em> July 27, 2026" — a deadline, not a timestamp — and as of this compile the drop is not independently confirmed. Sources disagree on when the deadline even falls: some reporting places it at 00:00 UTC on July 27, while the Hugging Face countdown on <code>moonshotai/Kimi-K3</code> was observed running to a US-timezone July 27, which would be most of a day later. The repository existed as a pre-release placeholder with a notify button, not as weights. Expect roughly 1.4 TB in native MXFP4, with community re-quantizations following.</p>
+    <p>Treat any claim that the weights have landed as needing a check against the <code>moonshotai</code> org on Hugging Face itself, not against secondhand posts — this story has attracted an unusual volume of premature "it's open" coverage.</p>
+    <div class="src"><a href="https://www.interconnects.ai/p/kimi-k3-the-open-weights-escalation">Interconnects</a><a href="https://huggingface.co/moonshotai/Kimi-K3">HF repo</a></div>
+  </div>
+</section>
+
 <section class="themes">
   <h2>Threads running through the period</h2>
   <p><strong>Frontier releases became a government matter.</strong> An EO, an export-control takedown, and government-gated previews within five weeks. The classified "covered frontier model" process lands by August 2026 — watch that.</p>
@@ -357,10 +379,11 @@
   <p><strong>Resolved / backfilled in v2:</strong> Grok 4.5 (July 8) now has independent benchmarks and is upgraded to CONFIRMED. Claude Sonnet 5 shipped June 30, 2026 and was missing from v1's June section entirely.</p>
   <p><strong>Backfilled in v3:</strong> The Anthropic–Department of War dispute, carried in v2 as a single vague “friction” item misdated to Mar–Apr, is restored to its actual Feb 24–27 chronology and upgraded to CONFIRMED on Anthropic's own statement, CNN and Fox reporting, and two government-contracts law firm advisories. Still unresolved: the outcome of Anthropic's suit over the supply-chain-risk designation, and whether the six-month agency wind-down (expiring around late August 2026) was enforced, softened, or overtaken by events.</p>
   <p><strong>Backfilled in v4:</strong> The Anthropic–SpaceX Colossus 1 lease (announced May 6, priced in the S-1 on May 20) was missing from v1–v3 entirely, and May was described as a lull on the strength of that omission. It is restored as CONFIRMED on CNBC, TechCrunch, Axios, Reuters and DCD reporting of SpaceX's SEC filing. Note that this file's coverage of compute and infrastructure deals is thinner than its coverage of model releases generally — the July AMD and Meta items are REPORTED one-liners, and other 2026 compute agreements (Amazon, Google, Microsoft) are not covered at all.</p>
-  <p><strong>Still open at v4 compile time:</strong> Opus 5's benchmark claims are all first-party and unreplicated. Kimi K3's open weights were promised for July 27 — unknown whether that held, and the Qwen 3.8 preview may have reset the open-weight picture immediately after. The White House decision on Chinese open models was live, not closed. The identity and status of OpenAI's unreleased "Galaxy"-class model is inferred, not stated. Whether any incident-reporting legislation advanced past announcement is unknown. When in doubt, search rather than trust this file.</p>
+  <p><strong>Resolved in v5:</strong> Opus 5's benchmark claims are no longer purely first-party — see the July 25–26 item — though the strongest outside numbers come from an evaluator that worked with Anthropic pre-release, so "independently replicated" still overstates it. Coverage extends to July 27.</p>
+  <p><strong>Still open at v5 compile time:</strong> Whether Kimi K3's weights actually landed on the promised date, and under what licence. The White House decision on Chinese open models remains live rather than closed; Politico reported Commerce is not moving imminently, and the mechanisms described are procurement rules, Entity List pressure and public advisories rather than prohibition, with the AI Overwatch, MATCH and Chip Security Acts reportedly lined up for the Senate NDAA — all of that is single-lens and unverified. Qwen 3.8 may reset the open-weight picture on arrival. The identity and status of OpenAI's unreleased "Galaxy"-class model is inferred, not stated. Whether any incident-reporting legislation advanced past announcement is still unknown. Coverage of July 25–27 rests on thinner sourcing than the rest of this file: that window is dominated by AI-generated aggregators, and items that could not be traced to a named outlet or primary source were left out rather than included at low confidence. When in doubt, search rather than trust this file.</p>
 </section>
 
-<footer>ai-news-research skill · knowledge patch v4 · regenerate when &gt;2 weeks stale or after major events</footer>
+<footer>ai-news-research skill · knowledge patch v5 · regenerate when &gt;2 weeks stale or after major events</footer>
 </div>
 <script>
   // Cycles auto → light → dark. "Auto" defers to prefers-color-scheme; the explicit
