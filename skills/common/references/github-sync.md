@@ -1,8 +1,10 @@
 # Syncing the digest to GitHub
 
 Repo: `thomasN4/ai-news-research-skill` (public). Reads need no auth. Writes need a
-fine-grained personal access token scoped to this repo alone, with **Contents:
-Read and write** permission and nothing else.
+fine-grained personal access token scoped to this repo alone, with **Contents: Read and
+write**. Opening a pull request needs **Pull requests: Read and write** on top of that —
+Contents alone gets you a pushed branch and a 403 on the PR itself. Nothing beyond those
+two.
 
 ## Reading
 
@@ -129,6 +131,61 @@ python3 push.py digest.html   digest.html   "digest: extend coverage to 2026-08-
 python3 push.py manifest.json manifest.json "manifest: rev 8, coverage-end 2026-08-15"
 
 unset GH_TOKEN
+```
+
+## Opening a pull request instead
+
+Grok pushes straight to `main`. Claude works on a branch and opens a PR, so that the
+editorial calls — a reworded summary line, a REPORTED item promoted to CONFIRMED — get
+seen before they become the shared baseline. The contents API above still works for a
+branch, but it makes one commit per file; use git if the commit structure matters.
+
+Push with the token in the environment rather than in the remote URL, which would
+persist it to `.git/config`:
+
+```bash
+git -c credential.helper='!f(){ echo username=<your-github-username>; echo "password=$GH_TOKEN"; };f' \
+    push -u origin <branch>
+```
+
+Use the account's own username there. `x-access-token` is the GitHub App convention and a
+fine-grained PAT sent that way is rejected with a 403 that reads like a scope problem.
+
+Then open the PR:
+
+```bash
+curl -sS -X POST \
+  -H "Authorization: Bearer $GH_TOKEN" \
+  -H "Accept: application/vnd.github+json" \
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  https://api.github.com/repos/thomasN4/ai-news-research-skill/pulls \
+  -d '{"title":"...","head":"<branch>","base":"main","body":"..."}'
+```
+
+Put `digest.html` and `manifest.json` in the same PR. The `sha` guard from the section
+above protects a direct push, not a branch, so re-read the manifest before merging in
+case the other agent pushed while the PR sat open.
+
+### Telling 403s apart
+
+| Symptom | Cause |
+| --- | --- |
+| connection error, auth never reached | sandbox egress blocked — see the section above |
+| `Resource not accessible by personal access token` | the token lacks that permission |
+| `Permission to ... denied to <user>` from `git push` | same thing, surfaced by git |
+
+`GET /repos/{owner}/{repo}` is no help here: its `permissions` block reports the *user's*
+access to the repo, not the token's grants, so it will cheerfully report `push: true` for
+a token that cannot push. Nor does a 5000/hour rate limit prove anything beyond the token
+being valid — reads of a public repo succeed regardless. The only honest test is
+attempting a write. Creating a throwaway ref and deleting it is cheap:
+
+```bash
+curl -sS -X POST -H "Authorization: Bearer $GH_TOKEN" \
+  https://api.github.com/repos/thomasN4/ai-news-research-skill/git/refs \
+  -d '{"ref":"refs/heads/probe","sha":"<main sha>"}'
+curl -sS -X DELETE -H "Authorization: Bearer $GH_TOKEN" \
+  https://api.github.com/repos/thomasN4/ai-news-research-skill/git/refs/heads/probe
 ```
 
 ## Ordering and consistency
