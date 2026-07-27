@@ -29,7 +29,7 @@ reasons with it. The digest is the interface between them.
 
 | File | Purpose |
 | --- | --- |
-| `manifest.json` | `coverage_start`, `coverage_end`, `updated_at`, `updated_by`, `revision`. A few hundred bytes, so an agent can check freshness without pulling 46 KB. |
+| `manifest.json` | `coverage_start`, `coverage_end`, `updated_at`, `updated_by`, `revision`. A few hundred bytes, so an agent can check freshness without pulling ~60 KB. |
 | `digest.html` | Dated, sourced chronology of AI developments, every item tagged CONFIRMED or REPORTED. Carries its own `coverage-start`/`coverage-end` meta tags and an instructional comment block for whichever agent regenerates it. |
 
 ## Conventions

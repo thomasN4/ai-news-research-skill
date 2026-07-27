@@ -22,8 +22,10 @@ Canonical copy, shared with Grok:
 only accepts URLs that already appeared in the conversation (in a search result, or pasted by the
 user); a URL that appears only in this file does not qualify, so it rejects both URLs above with a
 `PERMISSIONS_ERROR` without ever making a request. That is a tool restriction, not an outage:
-`raw.githubusercontent.com` is reachable from the sandbox. `digest.html` is ~46 KB of which most is
-CSS, so strip the markup before reading rather than dumping the file into context.
+`raw.githubusercontent.com` is reachable from the sandbox. `digest.html` is ~60 KB and grows by
+roughly a screenful of content every month it covers; only ~4 KB of that is CSS, so stripping the
+markup no longer buys you much. Read it selectively instead — the month sections are the unit, and
+a question about last week does not need February — rather than dumping the whole file into context.
 
 **Read order:**
 
