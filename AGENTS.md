@@ -69,6 +69,35 @@ there; what matters instead is that both files are in the same PR.
 
 Full write procedure, including token handling: `skills/common/references/github-sync.md`.
 
+## Card order within a month
+
+Cards inside a `<section class="month">` read top to bottom as a chronology. Keep them that
+way — a reader scanning a month should be able to follow the sequence without checking every
+`<span class="date">`.
+
+The order is:
+
+1. **Dated events, earliest first.** Sort on the *start* of the date, so `Jul 20–22` comes
+   before `Jul 21–22`. Ties keep their existing order.
+2. **Then cards spanning the section's whole window.** A roundup covering `Jul 10–24` inside
+   the `July (10th–24th)` section is a summary of the period, not an event in it, so it
+   belongs after the events it summarises — not first, which is where a naive start-date sort
+   puts it.
+3. **Then undated cards last** (`Mar`, `Mar (ongoing)`), in whatever order they already had.
+
+`early`/`mid`/`late <Month>` are dates, not undated — sort them as roughly the 5th, 15th and
+25th. Only a card with no day-level information at all falls to group 3.
+
+New months are written in order, so this mostly costs nothing. It matters when backfilling:
+an item added to a month that already exists goes at its date, not at the bottom.
+
+Reordering existing cards is an explicit exception to *append, don't rewrite* below, and the
+only one — it is a permitted move because no card text changes. If a reorder produces a diff
+with unequal insertions and deletions, or changes the file's byte length, something other
+than order changed and the diff needs reading before it is pushed. A reorder is a
+`digest.html` content change, so it bumps `revision` and leaves `coverage_start` /
+`coverage_end` alone.
+
 ## Non-negotiables
 
 - **Everything tracked here is public, `dist/` included.** No credential in any committed file —
@@ -78,7 +107,8 @@ Full write procedure, including token handling: `skills/common/references/github
 - **CONFIRMED vs REPORTED is load-bearing.** Items are promoted only when corroboration actually
   appears. A digest full of unverified claims is worse than a stale one, because staleness is a
   gap the reader can be told about and a fabricated baseline isn't.
-- **Append, don't rewrite.** New months get added; existing months stay as written. The
+- **Append, don't rewrite.** New months get added; existing months stay as written, except
+  for the card reordering described above, which moves cards without altering them. The
   instructional comment block, the `coverage-end` meta tag, and the visible patch label survive
   every regeneration. Correcting a claim that later proved wrong is fine — say so in the gaps
   box, with the revision that changed it.
