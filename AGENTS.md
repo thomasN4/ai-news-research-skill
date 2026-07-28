@@ -91,12 +91,27 @@ The order is:
 New months are written in order, so this mostly costs nothing. It matters when backfilling:
 an item added to a month that already exists goes at its date, not at the bottom.
 
-Reordering existing cards is an explicit exception to *append, don't rewrite* below, and the
-only one — it is a permitted move because no card text changes. If a reorder produces a diff
-with unequal insertions and deletions, or changes the file's byte length, something other
-than order changed and the diff needs reading before it is pushed. A reorder is a
-`digest.html` content change, so it bumps `revision` and leaves `coverage_start` /
-`coverage_end` alone.
+### Scope: new and backfilled months only
+
+This binds a month **while you are writing it**. Sort a new month as you compose it, and
+place a backfilled item at its date rather than at the bottom of the month it lands in.
+
+Months already published are **frozen**, even when their order is wrong. Finding a
+mis-ordered card in an existing month is not licence to re-sort it — *append, don't rewrite*
+wins, because a reorder rewrites history in the diff whether or not it rewrites any text,
+and the audit trail in `git log --oneline digest.html` is worth more than a tidy month.
+
+Revision 8 reordered January through May in one pass. That was the baseline-setting
+normalisation and it is not a precedent: after rev 8, an existing month is only reordered
+with the maintainer's agreement, asked for first (see *Non-negotiables*).
+
+### Checking a reorder
+
+While you are still writing a month, a reorder is a pure move: no card text changes. If a
+reorder produces a diff with unequal insertions and deletions, or changes the file's byte
+length, something other than order changed and the diff needs reading before it is pushed.
+A reorder is a `digest.html` content change, so it bumps `revision` and leaves
+`coverage_start` / `coverage_end` alone.
 
 ## Non-negotiables
 
@@ -107,12 +122,17 @@ than order changed and the diff needs reading before it is pushed. A reorder is 
 - **CONFIRMED vs REPORTED is load-bearing.** Items are promoted only when corroboration actually
   appears. A digest full of unverified claims is worse than a stale one, because staleness is a
   gap the reader can be told about and a fabricated baseline isn't.
-- **Append, don't rewrite.** New months get added; existing months stay as written, except
-  for the card reordering described above, which moves cards without altering them. The
-  instructional comment block, the `coverage-end` meta tag, and the visible patch label survive
-  every regeneration. Correcting a claim that later proved wrong is fine — say so in the gaps
-  box, with the revision that changed it.
+- **Append, don't rewrite.** New months get added; existing months stay as written, card order
+  included, once the month is published. The instructional comment block, the `coverage-end`
+  meta tag, and the visible patch label survive every regeneration. Correcting a claim that
+  later proved wrong is fine — say so in the gaps box, with the revision that changed it.
 - **Don't edit `dist/` by hand.** It is generated. Change `skills/` and rebuild.
+- **If a change would break a rule in this file, say so before making it.** Not in the commit
+  message, not in the PR body after the fact — beforehand, to the maintainer, with the rule
+  named and the reason it seems worth breaking. Some of these rules should lose an argument
+  occasionally; none of them should lose one silently. A PR that quietly bends a rule costs
+  more review attention than the change was worth, because the reviewer has to reconstruct
+  which rule moved and why. This applies to the agent that notices, whichever one that is.
 
 ## Conventions
 
