@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <!--
   KNOWLEDGE PATCH for the ai-news-research skill.
-  Coverage: 2026-01-01 through 2026-07-27. Compiled 2026-07-28 (v7; v6 2026-07-27; v5 same day; v4 same day, backfill only; v3 2026-07-25; v2 2026-07-24; v1 ended 2026-07-09).
+  Coverage: 2026-01-01 through 2026-07-27. Compiled 2026-07-28 (v8; v7 same day; v6 2026-07-27; v5 same day; v4 same day, backfill only; v3 2026-07-25; v2 2026-07-24; v1 ended 2026-07-09).
+  v8 adds no new dates: it reorders event cards within each month into chronological order
+  (see AGENTS.md, "Card order within a month"). No card text changed.
   v7 extends coverage backwards with a PARTIAL January section covering two threads only —
   Claude Code/Cowork adoption and Claude's constitution. January is not comprehensively covered;
   the gaps box names the major January stories deliberately left out. Search them, don't assume.
@@ -21,7 +23,7 @@
 <meta name="coverage-start" content="2026-01-01">
 <meta name="coverage-end" content="2026-07-27">
 <meta name="compiled" content="2026-07-28">
-<title>AI Developments · Jan–Jul 2026 · Knowledge Patch (v7)</title>
+<title>AI Developments · Jan–Jul 2026 · Knowledge Patch (v8)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -87,7 +89,7 @@
 <div class="wrap">
 <header>
   <button class="theme-toggle" id="themeToggle" aria-label="Switch color theme">THEME: AUTO</button>
-  <div class="patch-label">PATCH ai-2026-digest v7 · covers 2026-01-01 → 2026-07-27 (January partial) · compiled 2026-07-28</div>
+  <div class="patch-label">PATCH ai-2026-digest v8 · covers 2026-01-01 → 2026-07-27 (January partial) · compiled 2026-07-28</div>
   <h1>AI Developments, January–July 2026</h1>
   <p class="sub">A knowledge patch covering the gap after the model's training cutoff. Primary lens:
   Zvi Mowshowitz's <em>Don't Worry About the Vase</em>, cross-checked against lab announcements and press.
@@ -102,6 +104,12 @@
   <h2>January (partial — Claude Code and the constitution only)</h2>
   <p class="mood">A thematic backfill along two threads: agentic Claude going mainstream, and Anthropic publishing the document that trains it. The rest of January is deliberately not covered here — see the gaps box before treating this month as known.</p>
   <div class="ev">
+    <div class="head"><span class="date">on or before Jan 13</span><h3>Claude Cowork: agentic Claude for non-developers</h3><span class="chip r">REPORTED</span></div>
+    <p>A research preview bringing Claude Code-style agentic workflows to people who will not use a command line — Mac-only, gated behind a Max subscription, with a Chrome connector for browser automation. It was reportedly built in a week-and-a-half sprint with the code written by Claude Code itself.</p>
+    <p>The announcement date is not pinned down here. Zvi's standalone "Claude Coworks" post is dated Jan 13, so launch was on or before that; a widely-cited weekly recap places it in the Jan 15 episode instead, which is an episode date rather than a release date. No primary Anthropic announcement was located for this item — the build-sprint detail in particular rests on a single secondhand recap and should be verified before reuse.</p>
+    <div class="src"><a href="https://thursdai.news/releases/2026-01">ThursdAI: January recap</a><a href="https://thezvi.substack.com/archive">Zvi: archive ("Claude Coworks," Jan 13)</a></div>
+  </div>
+  <div class="ev">
     <div class="head"><span class="date">Jan 21–22</span><h3>Anthropic publishes Claude's constitution under CC0</h3><span class="chip c">CONFIRMED</span></div>
     <p>Anthropic released the full text of the document that shapes Claude's values and behaviour. It is training input rather than a runtime system prompt, and by Anthropic's own framing the final authority on its intentions for the model, with all other guidance meant to be consistent with it. The PDF carries a publication date of January 21; the announcement post is dated January 22. Lead authors are Amanda Askell and Joe Carlsmith, with Chris Olah, Jared Kaplan, Holden Karnofsky, "several Claude models" and other contributors credited. It is released under Creative Commons CC0 1.0 — usable by anyone for any purpose without asking.</p>
     <p>On length: Askell has described it as roughly 20,000 words. Secondhand recaps circulating a "90-page" figure are quoting a PDF rendering rather than the authors' own measure; prefer the word count. The document is explicitly scoped to mainline general-access Claude models, and Anthropic notes that some specialised models do not fully fit it — relevant to how the Fable/Mythos-tier safeguards later in this file should be read.</p>
@@ -112,12 +120,6 @@
     <p>Zvi Mowshowitz gave it three standalone posts between the Jan 22 and Jan 29 weeklies — on its structure, its ethical framework, and its open problems — then covered the wider reaction in AI #153 ("Living Documents"). The sharpest published objection came from Oliver Habryka, who read the document as substantially an attempt to make Claude into a sovereign to hand the future to, and called that doomed; he also argued that because the constitution is a "giant kitchen sink," almost anything can be found in conflict with some part of it. Lawfare ran two segments inside the same week, one of them arguing Jan 21 may end up a landmark date in AI governance.</p>
     <p>These are positions in a live argument, not settled assessments. Recorded here because the constitution's reception, not just its contents, is what later commentary refers back to.</p>
     <div class="src"><a href="https://thezvi.substack.com/p/ai-153-living-documents">Zvi: AI #153</a><a href="https://thezvi.substack.com/sitemap/2026">Zvi: sitemap (the three-part series)</a><a href="https://www.lawfaremedia.org/article/scaling-laws--rapid-response-to-the-implications-of-claude%27s-new-constitution">Lawfare: rapid response</a></div>
-  </div>
-  <div class="ev">
-    <div class="head"><span class="date">on or before Jan 13</span><h3>Claude Cowork: agentic Claude for non-developers</h3><span class="chip r">REPORTED</span></div>
-    <p>A research preview bringing Claude Code-style agentic workflows to people who will not use a command line — Mac-only, gated behind a Max subscription, with a Chrome connector for browser automation. It was reportedly built in a week-and-a-half sprint with the code written by Claude Code itself.</p>
-    <p>The announcement date is not pinned down here. Zvi's standalone "Claude Coworks" post is dated Jan 13, so launch was on or before that; a widely-cited weekly recap places it in the Jan 15 episode instead, which is an episode date rather than a release date. No primary Anthropic announcement was located for this item — the build-sprint detail in particular rests on a single secondhand recap and should be verified before reuse.</p>
-    <div class="src"><a href="https://thursdai.news/releases/2026-01">ThursdAI: January recap</a><a href="https://thezvi.substack.com/archive">Zvi: archive ("Claude Coworks," Jan 13)</a></div>
   </div>
   <div class="ev">
     <div class="head"><span class="date">Jan 8–29</span><h3>Claude Code adoption outgrows the weekly news cycle</h3><span class="chip c">CONFIRMED</span></div>
@@ -131,14 +133,14 @@
   <h2>February</h2>
   <p class="mood">Thinner than later months, but it holds the period's sharpest institutional rupture: Washington and Anthropic collide.</p>
   <div class="ev">
-    <div class="head"><span class="date">Feb 24–27</span><h3>Pentagon ultimatum; Anthropic refuses and is designated a supply-chain risk</h3><span class="chip c">CONFIRMED</span></div>
-    <p>Under a $200M contract signed in July 2025, Claude was the first frontier model cleared for the Pentagon's classified networks (via the Palantir partnership), with the department contractually bound to Anthropic's acceptable use policy. On Feb 24, War Secretary Pete Hegseth met Dario Amodei and demanded the restrictions be dropped so Claude could be used "for all lawful purposes," threatening contract termination, designation as a supply-chain risk, or invocation of the Defense Production Act. Anthropic's stated red lines were mass domestic surveillance and fully autonomous weapons. It refused by the 5:01pm Feb 27 deadline. Trump then ordered all federal agencies to stop using Anthropic (six-month wind-down for some), and Hegseth designated the company a supply-chain risk — a label normally reserved for firms tied to foreign adversaries — barring military contractors and suppliers from any commercial dealing with it. Reporting traces the trigger to Anthropic asking whether Claude had been used in the January operation that captured Maduro; Anthropic denies discussing specific operations. Both sides indicated fully autonomous weapons were not actually contemplated under the department's lawful-use framework, making the dispute substantially one about who controls usage policy rather than about a concrete pending use.</p>
-    <div class="src"><a href="https://www.anthropic.com/news/statement-department-of-war">Anthropic statement</a><a href="https://www.cnn.com/2026/02/27/tech/anthropic-pentagon-deadline">CNN</a><a href="https://www.foxnews.com/politics/pentagon-gives-ai-firm-ultimatum-lift-military-limits-friday-lose-200m-deal">Fox News (ultimatum)</a><a href="https://www.lesswrong.com/posts/ppj7v4sSCbJjLye3D/anthropic-and-the-dow-anthropic-responds">Zvi: Anthropic and the DoW</a><a href="https://thezvi.substack.com/p/ai-158-the-department-of-war">Zvi: AI #158</a></div>
-  </div>
-  <div class="ev">
     <div class="head"><span class="date">early Feb</span><h3>Moltbook: an AI-agent social network</h3><span class="chip r">REPORTED</span></div>
     <p>A social network populated largely by AI agents drew attention as a possible first taste of "high weirdness." On closer inspection much of the activity was human-steered or hype-driven, and the core unresolved problem was the inability to tell human-driven posts from autonomous ones.</p>
     <div class="src"><a href="https://thezvi.substack.com/p/welcome-to-moltbook">Zvi: Welcome to Moltbook</a></div>
+  </div>
+  <div class="ev">
+    <div class="head"><span class="date">Feb 24–27</span><h3>Pentagon ultimatum; Anthropic refuses and is designated a supply-chain risk</h3><span class="chip c">CONFIRMED</span></div>
+    <p>Under a $200M contract signed in July 2025, Claude was the first frontier model cleared for the Pentagon's classified networks (via the Palantir partnership), with the department contractually bound to Anthropic's acceptable use policy. On Feb 24, War Secretary Pete Hegseth met Dario Amodei and demanded the restrictions be dropped so Claude could be used "for all lawful purposes," threatening contract termination, designation as a supply-chain risk, or invocation of the Defense Production Act. Anthropic's stated red lines were mass domestic surveillance and fully autonomous weapons. It refused by the 5:01pm Feb 27 deadline. Trump then ordered all federal agencies to stop using Anthropic (six-month wind-down for some), and Hegseth designated the company a supply-chain risk — a label normally reserved for firms tied to foreign adversaries — barring military contractors and suppliers from any commercial dealing with it. Reporting traces the trigger to Anthropic asking whether Claude had been used in the January operation that captured Maduro; Anthropic denies discussing specific operations. Both sides indicated fully autonomous weapons were not actually contemplated under the department's lawful-use framework, making the dispute substantially one about who controls usage policy rather than about a concrete pending use.</p>
+    <div class="src"><a href="https://www.anthropic.com/news/statement-department-of-war">Anthropic statement</a><a href="https://www.cnn.com/2026/02/27/tech/anthropic-pentagon-deadline">CNN</a><a href="https://www.foxnews.com/politics/pentagon-gives-ai-firm-ultimatum-lift-military-limits-friday-lose-200m-deal">Fox News (ultimatum)</a><a href="https://www.lesswrong.com/posts/ppj7v4sSCbJjLye3D/anthropic-and-the-dow-anthropic-responds">Zvi: Anthropic and the DoW</a><a href="https://thezvi.substack.com/p/ai-158-the-department-of-war">Zvi: AI #158</a></div>
   </div>
 </section>
 
@@ -146,14 +148,14 @@
   <h2>March</h2>
   <p class="mood">OpenAI ships a browser; the Anthropic–Washington rupture spreads across the federal government.</p>
   <div class="ev">
-    <div class="head"><span class="date">Mar</span><h3>GPT-5.4 released</h3><span class="chip r">REPORTED</span></div>
-    <p>Part of OpenAI's sub-60-day release cadence through the spring (5.4 → 5.5 → 5.6).</p>
-    <div class="src"><a href="https://explainx.ai/blog/gpt-5-6-release-date-features-benchmarks-2026">release-cadence recap</a></div>
-  </div>
-  <div class="ev">
     <div class="head"><span class="date">early Mar</span><h3>OpenAI launches its browser; prediction-market insider trading</h3><span class="chip r">REPORTED</span></div>
     <p>In the ~40 hours before launch, a cluster of brand-new wallets placed roughly $300k in correct bets on the outcome — a conspicuous insider-trading pattern on prediction markets around AI launches.</p>
     <div class="src"><a href="https://thezvi.substack.com/p/ai-158-the-department-of-war">Zvi: AI #158</a></div>
+  </div>
+  <div class="ev">
+    <div class="head"><span class="date">Mar</span><h3>GPT-5.4 released</h3><span class="chip r">REPORTED</span></div>
+    <p>Part of OpenAI's sub-60-day release cadence through the spring (5.4 → 5.5 → 5.6).</p>
+    <div class="src"><a href="https://explainx.ai/blog/gpt-5-6-release-date-features-benchmarks-2026">release-cadence recap</a></div>
   </div>
   <div class="ev">
     <div class="head"><span class="date">Mar (ongoing)</span><h3>DoW fallout: GSA delisting, contractor spillover, litigation</h3><span class="chip c">CONFIRMED</span></div>
@@ -171,11 +173,6 @@
   <h2>April</h2>
   <p class="mood">The Mythos threshold: a model deemed too dangerous for general release.</p>
   <div class="ev">
-    <div class="head"><span class="date">Apr</span><h3>Claude Mythos Preview + Project Glasswing</h3><span class="chip c">CONFIRMED</span></div>
-    <p>Anthropic announced its first Mythos-class model (a tier above Opus) and declined to release it generally, citing offensive-cyber capability that outran its safeguards. Reports: it autonomously found thousands of vulnerabilities, and on one exploit harness produced 181 working Firefox exploits where Opus 4.6 produced two. Access went to ~150 vetted cyber-defense and infrastructure organizations at $25/$125 per Mtok.</p>
-    <div class="src"><a href="https://www.anthropic.com/news/claude-fable-5-mythos-5">Anthropic</a><a href="https://claudefa.st/blog/models/claude-fable-5-mythos-5">recap</a></div>
-  </div>
-  <div class="ev">
     <div class="head"><span class="date">~Apr 20</span><h3>Claude Opus 4.7</h3><span class="chip c">CONFIRMED</span></div>
     <p>Standard flagship refresh; a fast mode followed in May, alongside Claude Code additions (/goal, agent view).</p>
     <div class="src"><a href="https://thezvi.substack.com/p/ai-164-pre-opus">Zvi: AI #164</a><a href="https://thezvi.substack.com/p/ai-168-not-leading-the-future">Zvi: AI #168</a></div>
@@ -184,6 +181,11 @@
     <div class="head"><span class="date">Apr 23</span><h3>GPT-5.5</h3><span class="chip c">CONFIRMED</span></div>
     <p>OpenAI's spring flagship; effective context reported around 400k for complex tasks.</p>
     <div class="src"><a href="https://explainx.ai/blog/gpt-5-6-release-date-features-benchmarks-2026">recap</a></div>
+  </div>
+  <div class="ev">
+    <div class="head"><span class="date">Apr</span><h3>Claude Mythos Preview + Project Glasswing</h3><span class="chip c">CONFIRMED</span></div>
+    <p>Anthropic announced its first Mythos-class model (a tier above Opus) and declined to release it generally, citing offensive-cyber capability that outran its safeguards. Reports: it autonomously found thousands of vulnerabilities, and on one exploit harness produced 181 working Firefox exploits where Opus 4.6 produced two. Access went to ~150 vetted cyber-defense and infrastructure organizations at $25/$125 per Mtok.</p>
+    <div class="src"><a href="https://www.anthropic.com/news/claude-fable-5-mythos-5">Anthropic</a><a href="https://claudefa.st/blog/models/claude-fable-5-mythos-5">recap</a></div>
   </div>
   <div class="ev">
     <div class="head"><span class="date">Apr</span><h3>Anthropic pre-IPO frenzy; AI meme-stock mania</h3><span class="chip r">REPORTED</span></div>
@@ -212,14 +214,14 @@
     <div class="src"><a href="https://thezvi.substack.com/p/rtmh-pope-leos-magnifica-humanitas">Zvi's review</a></div>
   </div>
   <div class="ev">
-    <div class="head"><span class="date">May</span><h3>Economic signal: real speedups, exploding revenue</h3><span class="chip r">REPORTED</span></div>
-    <p>A METR survey found software engineers reporting ~2x speedup on the value of their work (up from 1.3x a year earlier). Anthropic's annualized revenue was reported to have gone from $9B to $44B in about four months.</p>
-    <div class="src"><a href="https://thezvi.substack.com/p/ai-168-not-leading-the-future">Zvi: AI #168</a></div>
-  </div>
-  <div class="ev">
     <div class="head"><span class="date">~May 29</span><h3>Claude Opus 4.8</h3><span class="chip c">CONFIRMED</span></div>
     <p>Released only six weeks after Opus 4.7; Zvi covered the system card, capabilities, and a dedicated model-welfare post. It became the fallback workhorse behind Fable 5 two weeks later.</p>
     <div class="src"><a href="https://thezvi.substack.com/p/claude-opus-48-is-honestly-better">Zvi: system card</a><a href="https://thezvi.substack.com/p/claude-opus-48-capabilities-and-reactions">capabilities</a></div>
+  </div>
+  <div class="ev">
+    <div class="head"><span class="date">May</span><h3>Economic signal: real speedups, exploding revenue</h3><span class="chip r">REPORTED</span></div>
+    <p>A METR survey found software engineers reporting ~2x speedup on the value of their work (up from 1.3x a year earlier). Anthropic's annualized revenue was reported to have gone from $9B to $44B in about four months.</p>
+    <div class="src"><a href="https://thezvi.substack.com/p/ai-168-not-leading-the-future">Zvi: AI #168</a></div>
   </div>
 </section>
 
@@ -429,7 +431,7 @@
   <p><strong>Still open at v5 compile time:</strong> Whether Kimi K3's weights actually landed on the promised date, and under what licence. The White House decision on Chinese open models remains live rather than closed; Politico reported Commerce is not moving imminently, and the mechanisms described are procurement rules, Entity List pressure and public advisories rather than prohibition, with the AI Overwatch, MATCH and Chip Security Acts reportedly lined up for the Senate NDAA — all of that is single-lens and unverified. Qwen 3.8 may reset the open-weight picture on arrival. The identity and status of OpenAI's unreleased "Galaxy"-class model is inferred, not stated. Whether any incident-reporting legislation advanced past announcement is still unknown. Coverage of July 25–27 rests on thinner sourcing than the rest of this file: that window is dominated by AI-generated aggregators, and items that could not be traced to a named outlet or primary source were left out rather than included at low confidence. When in doubt, search rather than trust this file.</p>
 </section>
 
-<footer>ai-news-research skill · knowledge patch v7 · regenerate when &gt;2 weeks stale or after major events</footer>
+<footer>ai-news-research skill · knowledge patch v8 · regenerate when &gt;2 weeks stale or after major events</footer>
 </div>
 <script>
   // Cycles auto → light → dark. "Auto" defers to prefers-color-scheme; the explicit
