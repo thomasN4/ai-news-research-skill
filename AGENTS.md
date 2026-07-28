@@ -41,6 +41,18 @@ leaves `coverage_end` where it is.
 The digest is deliberately not bundled into `dist/`; both skills fetch it live at runtime. That
 is why a digest push never invalidates an installed bundle, and why editing a `SKILL.md` does.
 
+## The Pages copy is for humans
+
+GitHub Pages serves the repo root, so `digest.html` renders at
+<https://thomasn4.github.io/ai-news-research-skill/>. Both skills still fetch the
+`raw.githubusercontent.com` copy, which stays canonical. Don't retarget them at Pages: it is the
+same file behind a second CDN cache, so a fresh push appears on `raw` first, and the skills'
+`curl`-not-`web_fetch` instruction is written against the raw URL.
+
+`index.html` (a meta-refresh to `digest.html`) and `.nojekyll` are hand-written, not generated.
+Regenerating the digest never touches them, and `.nojekyll` needs to stay — without it Pages runs
+a Jekyll build the digest has no use for.
+
 ## Concurrency is asymmetric
 
 Grok pushes straight to `main` through the contents API, where the blob `sha` is the concurrency
