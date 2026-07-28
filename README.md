@@ -5,6 +5,9 @@ AI news. Grok has live X access and feeds verbatim, sourced material *into* the 
 has no X access and a training cutoff well before these events, so it reads the digest and
 reasons with it. The digest is the interface between them.
 
+**Reading the digest:** <https://thomasn4.github.io/ai-news-research-skill/> renders it in a
+browser. The raw URL the skills fetch is served as `text/plain`, so it shows source instead.
+
 **Installing:** see [INSTALL.md](INSTALL.md).
 
 ## Layout
@@ -12,6 +15,8 @@ reasons with it. The digest is the interface between them.
 ```
 ├── digest.html                       the digest — the only copy, fetched live by both skills
 ├── manifest.json                     cheap freshness check; read this before the digest
+├── index.html                        redirect to digest.html, so the Pages URL lands on it
+├── .nojekyll                         no Jekyll build; digest.html is self-contained
 ├── INSTALL.md
 ├── AGENTS.md                         conventions for agents working on this repo
 ├── .env.example                      how to mint the write token
