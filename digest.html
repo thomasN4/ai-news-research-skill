@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <!--
   KNOWLEDGE PATCH for the ai-news-research skill.
-  Coverage: 2026-02-01 through 2026-07-27. Compiled 2026-07-27 (v6; v5 same day; v4 same day, backfill only; v3 2026-07-25; v2 2026-07-24; v1 ended 2026-07-09).
-  v6 adds no new dates: it promotes the Kimi K3 open-weights item on primary sources, backfills the
-  July 24 UK AISI / CAISI assessment, and corrects K3's activated-parameter count.
+  Coverage: 2026-01-01 through 2026-07-27. Compiled 2026-07-28 (v7; v6 2026-07-27; v5 same day; v4 same day, backfill only; v3 2026-07-25; v2 2026-07-24; v1 ended 2026-07-09).
+  v7 extends coverage backwards with a PARTIAL January section covering two threads only —
+  Claude Code/Cowork adoption and Claude's constitution. January is not comprehensively covered;
+  the gaps box names the major January stories deliberately left out. Search them, don't assume.
   Primary lens: Zvi Mowshowitz's "Don't Worry About the Vase" (thezvi.substack.com),
   cross-checked against primary sources (lab announcements) and wire/tech press.
 
@@ -17,10 +18,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="coverage-start" content="2026-02-01">
+<meta name="coverage-start" content="2026-01-01">
 <meta name="coverage-end" content="2026-07-27">
-<meta name="compiled" content="2026-07-27">
-<title>AI Developments · Feb–Jul 2026 · Knowledge Patch (v6)</title>
+<meta name="compiled" content="2026-07-28">
+<title>AI Developments · Jan–Jul 2026 · Knowledge Patch (v7)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -86,8 +87,8 @@
 <div class="wrap">
 <header>
   <button class="theme-toggle" id="themeToggle" aria-label="Switch color theme">THEME: AUTO</button>
-  <div class="patch-label">PATCH ai-2026-digest v6 · covers 2026-02-01 → 2026-07-27 · compiled 2026-07-27</div>
-  <h1>AI Developments, February–July 2026</h1>
+  <div class="patch-label">PATCH ai-2026-digest v7 · covers 2026-01-01 → 2026-07-27 (January partial) · compiled 2026-07-28</div>
+  <h1>AI Developments, January–July 2026</h1>
   <p class="sub">A knowledge patch covering the gap after the model's training cutoff. Primary lens:
   Zvi Mowshowitz's <em>Don't Worry About the Vase</em>, cross-checked against lab announcements and press.
   Everything here is dated and sourced; treat REPORTED items as needing verification before reuse.</p>
@@ -96,6 +97,35 @@
     <span class="chip r">REPORTED — single lens or unverified detail</span>
   </div>
 </header>
+
+<section class="month">
+  <h2>January (partial — Claude Code and the constitution only)</h2>
+  <p class="mood">A thematic backfill along two threads: agentic Claude going mainstream, and Anthropic publishing the document that trains it. The rest of January is deliberately not covered here — see the gaps box before treating this month as known.</p>
+  <div class="ev">
+    <div class="head"><span class="date">Jan 21–22</span><h3>Anthropic publishes Claude's constitution under CC0</h3><span class="chip c">CONFIRMED</span></div>
+    <p>Anthropic released the full text of the document that shapes Claude's values and behaviour. It is training input rather than a runtime system prompt, and by Anthropic's own framing the final authority on its intentions for the model, with all other guidance meant to be consistent with it. The PDF carries a publication date of January 21; the announcement post is dated January 22. Lead authors are Amanda Askell and Joe Carlsmith, with Chris Olah, Jared Kaplan, Holden Karnofsky, "several Claude models" and other contributors credited. It is released under Creative Commons CC0 1.0 — usable by anyone for any purpose without asking.</p>
+    <p>On length: Askell has described it as roughly 20,000 words. Secondhand recaps circulating a "90-page" figure are quoting a PDF rendering rather than the authors' own measure; prefer the word count. The document is explicitly scoped to mainline general-access Claude models, and Anthropic notes that some specialised models do not fully fit it — relevant to how the Fable/Mythos-tier safeguards later in this file should be read.</p>
+    <div class="src"><a href="https://anthropic.com/news/claude-new-constitution">Anthropic announcement</a><a href="https://www-cdn.anthropic.com/d0636f72a9493d279ed36b33987da3430bcb5911/claudes-constitution_webPDF_26-02.02a.pdf">constitution (PDF)</a><a href="https://lawfaremedia.org/article/interpreting-claude-s-constitution">Lawfare: Interpreting</a><a href="https://www.lawfaremedia.org/article/scaling-laws--claude's-constitution--with-amanda-askell">Lawfare: Askell interview</a></div>
+  </div>
+  <div class="ev">
+    <div class="head"><span class="date">Jan 22–29</span><h3>Reception: a three-part reading, and the "sovereign" objection</h3><span class="chip r">REPORTED</span></div>
+    <p>Zvi Mowshowitz gave it three standalone posts between the Jan 22 and Jan 29 weeklies — on its structure, its ethical framework, and its open problems — then covered the wider reaction in AI #153 ("Living Documents"). The sharpest published objection came from Oliver Habryka, who read the document as substantially an attempt to make Claude into a sovereign to hand the future to, and called that doomed; he also argued that because the constitution is a "giant kitchen sink," almost anything can be found in conflict with some part of it. Lawfare ran two segments inside the same week, one of them arguing Jan 21 may end up a landmark date in AI governance.</p>
+    <p>These are positions in a live argument, not settled assessments. Recorded here because the constitution's reception, not just its contents, is what later commentary refers back to.</p>
+    <div class="src"><a href="https://thezvi.substack.com/p/ai-153-living-documents">Zvi: AI #153</a><a href="https://thezvi.substack.com/sitemap/2026">Zvi: sitemap (the three-part series)</a><a href="https://www.lawfaremedia.org/article/scaling-laws--rapid-response-to-the-implications-of-claude%27s-new-constitution">Lawfare: rapid response</a></div>
+  </div>
+  <div class="ev">
+    <div class="head"><span class="date">on or before Jan 13</span><h3>Claude Cowork: agentic Claude for non-developers</h3><span class="chip r">REPORTED</span></div>
+    <p>A research preview bringing Claude Code-style agentic workflows to people who will not use a command line — Mac-only, gated behind a Max subscription, with a Chrome connector for browser automation. It was reportedly built in a week-and-a-half sprint with the code written by Claude Code itself.</p>
+    <p>The announcement date is not pinned down here. Zvi's standalone "Claude Coworks" post is dated Jan 13, so launch was on or before that; a widely-cited weekly recap places it in the Jan 15 episode instead, which is an episode date rather than a release date. No primary Anthropic announcement was located for this item — the build-sprint detail in particular rests on a single secondhand recap and should be verified before reuse.</p>
+    <div class="src"><a href="https://thursdai.news/releases/2026-01">ThursdAI: January recap</a><a href="https://thezvi.substack.com/archive">Zvi: archive ("Claude Coworks," Jan 13)</a></div>
+  </div>
+  <div class="ev">
+    <div class="head"><span class="date">Jan 8–29</span><h3>Claude Code adoption outgrows the weekly news cycle</h3><span class="chip c">CONFIRMED</span></div>
+    <p>The clearest signal of scale in this period is editorial rather than numeric. In AI #151 (Jan 15) Zvi announced that Claude Code and Cowork had come to occupy so much of each week's AI news that he was pulling them out of the weeklies entirely and giving them their own series, his stated reason being that growth was overwhelming Anthropic's servers. Three spin-off posts ran in January alone ("Claude Codes" Jan 9, "Claude Coworks" Jan 13, "Claude Codes #3" the following week) and the series continues into February. Two of the month's five weeklies are titled after it: #150 "While Claude Codes" and #151 "While Claude Coworks."</p>
+    <p>This is the origin of the capacity pressure that recurs later in this file — the June–July weekly-limit and Claude Code allocation changes are downstream of demand that was already outrunning supply in January. Separately, the Claude Code VS Code extension reached general availability around Jan 22 (single-source; the Marketplace listing corroborates existence, not the date).</p>
+    <div class="src"><a href="https://thezvi.substack.com/p/ai-151-while-claude-coworks">Zvi: AI #151</a><a href="https://thezvi.substack.com/p/ai-150-while-claude-codes">Zvi: AI #150</a><a href="https://thezvi.substack.com/sitemap/2026">Zvi: sitemap</a><a href="https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code">VS Code Marketplace</a></div>
+  </div>
+</section>
 
 <section class="month">
   <h2>February</h2>
@@ -393,11 +423,13 @@
   <p><strong>Backfilled in v4:</strong> The Anthropic–SpaceX Colossus 1 lease (announced May 6, priced in the S-1 on May 20) was missing from v1–v3 entirely, and May was described as a lull on the strength of that omission. It is restored as CONFIRMED on CNBC, TechCrunch, Axios, Reuters and DCD reporting of SpaceX's SEC filing. Note that this file's coverage of compute and infrastructure deals is thinner than its coverage of model releases generally — the July AMD and Meta items are REPORTED one-liners, and other 2026 compute agreements (Amazon, Google, Microsoft) are not covered at all.</p>
   <p><strong>Resolved in v5:</strong> Opus 5's benchmark claims are no longer purely first-party — see the July 25–26 item — though the strongest outside numbers come from an evaluator that worked with Anthropic pre-release, so "independently replicated" still overstates it. Coverage extends to July 27.</p>
   <p><strong>Resolved in v6:</strong> Kimi K3's weights did land on July 27, and the item above is promoted on the Hugging Face file tree and the technical report themselves rather than on secondhand posts. The licence question is settled, and the answer is <em>not</em> the widely predicted Modified MIT. Two corrections: K3's activated parameter count is 104B, not the ~50B this file carried in the July 16 item from v1 onward — the report's own architecture table is the source — and the UK AISI / CAISI joint cyber assessment of July 24 was absent from v4 and v5, which linked only AISI's earlier generic piece on the open-weight cyber gap.</p>
+  <p><strong>Added in v7 — and what it does not add:</strong> Coverage now reaches back to January 2026, but <em>only</em> along two threads: Claude Code/Cowork adoption and Claude's constitution. January is otherwise uncovered, and the manifest's <code>coverage_start</code> now says 2026-01-01, so this box is the only thing preventing a reader from treating the month as done. Major January stories deliberately left out, each of which should be searched rather than assumed: xAI's $20B Series E at a ~$230B valuation (and the SpaceX acquisition that followed in February); Microsoft's Maia 200 inference accelerator (Jan 26); NVIDIA's Vera Rubin platform and the CES robotics releases; the Kimi K2.5 open-weights release and the wider Chinese open-weight wave; Zhipu AI's and MiniMax's Hong Kong IPOs; the Grok non-consensual-imagery incident and the multi-jurisdiction investigations, bans and xAI safety-team departures that followed; China's draft rules on "anthropomorphic AI"; Google's Universal Commerce Protocol, Personalized Intelligence and the Apple Gemini deal; OpenAI beginning ads testing in ChatGPT. Also note the NVIDIA–Groq deal is frequently misfiled under January: it was announced 2025-12-24 and is a non-exclusive licence plus acquihire, not an acquisition (NVIDIA's FY2026 10-K records $13.0B at closing plus $4B payable).</p>
+  <p><strong>Correction carried in v7:</strong> secondhand recaps describing Claude's constitution as a "90-page" document are quoting a PDF rendering. Amanda Askell's own figure is roughly 20,000 words. The earlier length claim never appeared in this file; it is noted here because it is in wide circulation.</p>
   <p><strong>Still open at v6 compile time:</strong> The release settles capability questions, not provenance. The report is silent on the distillation allegations, and weights alone cannot establish what post-training data was used. No independent replication of Moonshot's own numbers exists yet — every figure in the report is first-party apart from the third-party block it cites, and its coding results mix agent harnesses, which can move scores by double digits. Whether the published checkpoint is the same one served on the API is asserted in community posts but not demonstrated. Everything on the v5 list below still stands.</p>
   <p><strong>Still open at v5 compile time:</strong> Whether Kimi K3's weights actually landed on the promised date, and under what licence. The White House decision on Chinese open models remains live rather than closed; Politico reported Commerce is not moving imminently, and the mechanisms described are procurement rules, Entity List pressure and public advisories rather than prohibition, with the AI Overwatch, MATCH and Chip Security Acts reportedly lined up for the Senate NDAA — all of that is single-lens and unverified. Qwen 3.8 may reset the open-weight picture on arrival. The identity and status of OpenAI's unreleased "Galaxy"-class model is inferred, not stated. Whether any incident-reporting legislation advanced past announcement is still unknown. Coverage of July 25–27 rests on thinner sourcing than the rest of this file: that window is dominated by AI-generated aggregators, and items that could not be traced to a named outlet or primary source were left out rather than included at low confidence. When in doubt, search rather than trust this file.</p>
 </section>
 
-<footer>ai-news-research skill · knowledge patch v6 · regenerate when &gt;2 weeks stale or after major events</footer>
+<footer>ai-news-research skill · knowledge patch v7 · regenerate when &gt;2 weeks stale or after major events</footer>
 </div>
 <script>
   // Cycles auto → light → dark. "Auto" defers to prefers-color-scheme; the explicit
