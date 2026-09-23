@@ -100,6 +100,19 @@ or changes the file's byte length, something other than order changed, and the d
 reading before it is pushed. A reorder is a `digest.html` content change, so it bumps
 `revision` and leaves `coverage_start` / `coverage_end` alone.
 
+## Sourcing a forward extension
+
+Start from Zvi Mowshowitz's blog: the weekly `AI #NNN` roundups plus his standalone posts.
+`https://thezvi.substack.com/api/v1/archive?sort=new&limit=25` lists them with dates, and
+`/api/v1/posts/<slug>` returns a post's full body, so no browser is needed. Treat a post as a map
+to primaries, not as the citation. Follow every item to its primary source before carrying it as
+CONFIRMED.
+
+- **A post's date is not the event's date.** This has misdated cards more than once. Date every
+  card from the primary.
+- **The roundups don't cover Brussels.** EU items have to be worked from the Commission's own
+  releases, the Official Journal and national gazettes.
+
 ## Non-negotiables
 
 - **Everything tracked here is public, `dist/` included.** No credential in any committed file —
