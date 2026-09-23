@@ -89,29 +89,16 @@ The order is:
 25th. Only a card with no day-level information at all falls to group 3.
 
 New months are written in order, so this mostly costs nothing. It matters when backfilling:
-an item added to a month that already exists goes at its date, not at the bottom.
-
-### Scope: new and backfilled months only
-
-This binds a month **while you are writing it**. Sort a new month as you compose it, and
-place a backfilled item at its date rather than at the bottom of the month it lands in.
-
-Months already published are **frozen**, even when their order is wrong. Finding a
-mis-ordered card in an existing month is not licence to re-sort it — *append, don't rewrite*
-wins, because a reorder rewrites history in the diff whether or not it rewrites any text,
-and the audit trail in `git log --oneline digest.html` is worth more than a tidy month.
-
-Revision 8 reordered January through May in one pass. That was the baseline-setting
-normalisation and it is not a precedent: after rev 8, an existing month is only reordered
-with the maintainer's agreement, asked for first (see *Non-negotiables*).
+an item added to a month that already exists goes at its date, not at the bottom. It applies
+to every month, published or not. If you find one out of order, re-sort it.
 
 ### Checking a reorder
 
-While you are still writing a month, a reorder is a pure move: no card text changes. If a
-reorder produces a diff with unequal insertions and deletions, or changes the file's byte
-length, something other than order changed and the diff needs reading before it is pushed.
-A reorder is a `digest.html` content change, so it bumps `revision` and leaves
-`coverage_start` / `coverage_end` alone.
+Put a reorder in its own commit, and make it a pure move with no card text changed. That
+keeps the diff readable. If a reorder produces a diff with unequal insertions and deletions,
+or changes the file's byte length, something other than order changed, and the diff needs
+reading before it is pushed. A reorder is a `digest.html` content change, so it bumps
+`revision` and leaves `coverage_start` / `coverage_end` alone.
 
 ## Non-negotiables
 
@@ -122,10 +109,13 @@ A reorder is a `digest.html` content change, so it bumps `revision` and leaves
 - **CONFIRMED vs REPORTED is load-bearing.** Items are promoted only when corroboration actually
   appears. A digest full of unverified claims is worse than a stale one, because staleness is a
   gap the reader can be told about and a fabricated baseline isn't.
-- **Append, don't rewrite.** New months get added; existing months stay as written, card order
-  included, once the month is published. The instructional comment block, the `coverage-end`
-  meta tag, and the visible patch label survive every regeneration. Correcting a claim that
-  later proved wrong is fine — say so in the gaps box, with the revision that changed it.
+- **Fix cards in place.** When a card turns out to be wrong, stale, misdated, mis-ordered or
+  badly framed, correct the card itself. Don't leave it standing and park the correction in
+  the gaps box. Git is the history: the commit message says what changed and why, and
+  `git log -p digest.html` shows the old text. The gaps box is for what is still open or
+  unverified, so remove items from it once they are resolved. The instructional comment block,
+  the `coverage-end` meta tag and the visible patch label are functional, and they survive
+  every regeneration.
 - **Don't edit `dist/` by hand.** It is generated. Change `skills/` and rebuild.
 - **If a change would break a rule in this file, say so before making it.** Not in the commit
   message, not in the PR body after the fact — beforehand, to the maintainer, with the rule
