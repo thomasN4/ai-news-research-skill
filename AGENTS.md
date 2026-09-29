@@ -69,11 +69,42 @@ there; what matters instead is that both files are in the same PR.
 
 Full write procedure, including token handling: `skills/common/references/github-sync.md`.
 
+## Dating a card
+
+**A card's date records when the thing happened, not when anyone said so.** An incident made
+public months later is dated by the incident. The same goes for a Zvi post, a press write-up, a
+report's byline or a lab's disclosure: all of them are dates of *telling*.
+
+1. **The chip is the event date.** Use a range when the event spans days (`Jul 23–25`), or an
+   arrow for a chronology (`May 7 → Jul 20`). When only the month is known, use it, falling back
+   to `early`/`mid`/`late <Month>` and then to the undated group below.
+2. **The card lives in the event's section.** A June breach disclosed in September goes in June.
+   That makes every such disclosure a backfill: it bumps `revision` and leaves `coverage_end`
+   where it is.
+3. **Date the thing by when it happened, and date the telling by when it was told. Give the
+   telling its own card only if it is news in itself.** A disclosure is news when governments,
+   labs or courts act on it, or when the disclosure decision is the story. Albanese's
+   press conference and OpenAI's confirmation that it chose not to disclose the wiki board are
+   news. A write-up that only reports an old event is not. When both cards exist, each points to
+   the other (`the June 18 card`, `the September 23 card`), and the incident's facts live on the
+   incident card.
+4. **A recent window still tells readers about old events.** When a disclosure in a window adds a
+   card to an earlier month, the window's roundup gets a one-line pointer ("Disclosed this
+   window, carried at the event's date: ..."). The skill tells readers to start from the latest
+   sections, and without the pointer they would never find the backfill.
+5. **Partial dates stay honest.** Where the primary dates an incident only loosely ("this
+   summer", "in June"), date it as precisely as the primary allows, and say in the card text,
+   not the chip, what is unknown.
+
+A report, paper or system card is its own event. It is dated by publication even when it
+describes earlier work. What moves is an *incident* dated by its telling.
+
 ## Card order within a month
 
 Cards inside a `<section class="month">` read top to bottom as a chronology. Keep them that
 way — a reader scanning a month should be able to follow the sequence without checking every
-`<span class="date">`.
+`<span class="date">`. Order runs on the event date, per *Dating a card* above, never on the date
+something was disclosed.
 
 The order is:
 
@@ -108,10 +139,38 @@ Start from Zvi Mowshowitz's blog: the weekly `AI #NNN` roundups plus his standal
 to primaries, not as the citation. Follow every item to its primary source before carrying it as
 CONFIRMED.
 
-- **A post's date is not the event's date.** This has misdated cards more than once. Date every
-  card from the primary.
+- **A post's date is not the event's date, and neither is the primary's.** This has misdated
+  cards more than once. Take the event date from the primary, which for an incident report is
+  the date of the incident and not the date of the report. See *Dating a card*.
 - **The roundups don't cover Brussels.** EU items have to be worked from the Commission's own
-  releases, the Official Journal and national gazettes.
+  releases, the Official Journal and national gazettes. The Commission press corner renders
+  with JavaScript, but
+  `ec.europa.eu/commission/presscorner/api/documents?reference=IP/26/NNNN&language=en` returns
+  the full text.
+- **The roundups lag the primaries.** The biggest items often reach lab feeds before Zvi covers
+  them. Sweep these every time: the OpenAI RSS feed (`openai.com/news/rss.xml`), Anthropic's
+  `/news` index, xAI's `docs.x.ai/developers/release-notes`, the Claude API release notes,
+  METR's blog, and the Gemini API changelog, which is the fastest primary for any Google model
+  date.
+- **Check the artefact, not the write-up.** Repositories (`config.json`, licence, safetensors
+  index), system cards and pricing tables have repeatedly contradicted coverage, and the errors
+  are usually of *framing*, which survives fact-checking because each word is true. When a
+  window is thick with AI-generated aggregators recycling each other, trace every card to a
+  primary or a named outlet, and leave out what can't be traced.
+- **Some sources date themselves.** An X post ID encodes its UTC time
+  (`(id >> 22) + 1288834974657` ms), so X items can be dated without Grok. The Trump's Truth
+  archive (`trumpstruth.org/statuses/<n>`) timestamps Truth Social posts. For a page that
+  changes over time, check the Wayback CDX (`web.archive.org/cdx/search/cdx?url=...`) before
+  attributing live content to an earlier date.
+- **For X content, use the Grok courier.** Ask for URL, handle, UTC timestamp and verbatim text,
+  and tell Grok to mark gaps "not found" rather than reconstruct them.
+- **A 403 is bot protection, not a dead link.** `openai.com`, `axios.com`, `reuters.com`,
+  `cnbc.com`, `washingtonpost.com`, `bloomberg.com`, `sec.gov`, `consilium.europa.eu`,
+  `euractiv.com` and others refuse curl, and some refuse Playwright's own Chromium too. They
+  load in a real browser (Brave driven over CDP on a virtual display, with a throwaway
+  profile). `deploymentsafety.openai.com`, where OpenAI's system cards live, serves to curl.
+  Axios gates its body after the lede in any browser; its Yahoo syndication carries the full
+  text. Keep the citation either way.
 
 ## Non-negotiables
 
@@ -126,9 +185,18 @@ CONFIRMED.
   badly framed, correct the card itself. Don't leave it standing and park the correction in
   the gaps box. Git is the history: the commit message says what changed and why, and
   `git log -p digest.html` shows the old text. The gaps box is for what is still open or
-  unverified, so remove items from it once they are resolved. The instructional comment block,
-  the `coverage-end` meta tag and the visible patch label are functional, and they survive
-  every regeneration.
+  unverified, so remove items from it once they are resolved. The comment block's instructions
+  and coverage line, the `coverage-end` meta tag and the visible patch label are functional,
+  and they survive every regeneration.
+- **The digest records the current state only.** What changed and why goes in the commit
+  message and the PR, never in the digest: no per-revision notes in the comment block, no
+  "(backfilled at vN)" or "until vN this file said" in a card, no "(added at vN)" in the
+  themes, and no revision-keyed paragraphs in the gaps box. The gaps box keeps three kinds of
+  item: open, unverified or single-source, and deliberately not covered. Where a correction
+  matters to a reader, for instance because a wrong date is in wide circulation, state the
+  correction and leave out the revision: "coverage dates this Sep 9; the press release is
+  Sep 3". Sourcing method that outlasts one revision goes in *Sourcing a forward extension*
+  above.
 - **Don't edit `dist/` by hand.** It is generated. Change `skills/` and rebuild.
 - **If a change would break a rule in this file, say so before making it.** Not in the commit
   message, not in the PR body after the fact — beforehand, to the maintainer, with the rule
