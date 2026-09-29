@@ -43,8 +43,10 @@ browser. The raw URL the skills fetch is served as `text/plain`, so it shows sou
   search instead.
 - **Fix cards in place.** New months get added. When an existing card is wrong or stale,
   correct the card itself and say what changed in the commit message; git holds the history.
-  The gaps box lists only what is still open. The instructional comment block, the
-  `coverage-end` meta tag, and the visible patch label are preserved across regenerations.
+  The gaps box lists only what is still open, unverified or deliberately not covered. The
+  digest records the current state only; its history lives in git. The comment block's
+  instructions and coverage line, the `coverage-end` meta tag, and the visible patch label are
+  preserved across regenerations.
 - **Digest first, manifest second** when pushing, so the manifest never advertises coverage the
   digest lacks. Both go up in the same session.
 - **CONFIRMED vs REPORTED is load-bearing.** A digest full of unverified claims is worse than a

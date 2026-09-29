@@ -111,7 +111,34 @@ CONFIRMED.
 - **A post's date is not the event's date.** This has misdated cards more than once. Date every
   card from the primary.
 - **The roundups don't cover Brussels.** EU items have to be worked from the Commission's own
-  releases, the Official Journal and national gazettes.
+  releases, the Official Journal and national gazettes. The Commission press corner renders
+  with JavaScript, but
+  `ec.europa.eu/commission/presscorner/api/documents?reference=IP/26/NNNN&language=en` returns
+  the full text.
+- **The roundups lag the primaries.** The biggest items often reach lab feeds before Zvi covers
+  them. Sweep these every time: the OpenAI RSS feed (`openai.com/news/rss.xml`), Anthropic's
+  `/news` index, xAI's `docs.x.ai/developers/release-notes`, the Claude API release notes,
+  METR's blog, and the Gemini API changelog, which is the fastest primary for any Google model
+  date.
+- **Check the artefact, not the write-up.** Repositories (`config.json`, licence, safetensors
+  index), system cards and pricing tables have repeatedly contradicted coverage, and the errors
+  are usually of *framing*, which survives fact-checking because each word is true. When a
+  window is thick with AI-generated aggregators recycling each other, trace every card to a
+  primary or a named outlet, and leave out what can't be traced.
+- **Some sources date themselves.** An X post ID encodes its UTC time
+  (`(id >> 22) + 1288834974657` ms), so X items can be dated without Grok. The Trump's Truth
+  archive (`trumpstruth.org/statuses/<n>`) timestamps Truth Social posts. For a page that
+  changes over time, check the Wayback CDX (`web.archive.org/cdx/search/cdx?url=...`) before
+  attributing live content to an earlier date.
+- **For X content, use the Grok courier.** Ask for URL, handle, UTC timestamp and verbatim text,
+  and tell Grok to mark gaps "not found" rather than reconstruct them.
+- **A 403 is bot protection, not a dead link.** `openai.com`, `axios.com`, `reuters.com`,
+  `cnbc.com`, `washingtonpost.com`, `bloomberg.com`, `sec.gov`, `consilium.europa.eu`,
+  `euractiv.com` and others refuse curl, and some refuse Playwright's own Chromium too. They
+  load in a real browser (Brave driven over CDP on a virtual display, with a throwaway
+  profile). `deploymentsafety.openai.com`, where OpenAI's system cards live, serves to curl.
+  Axios gates its body after the lede in any browser; its Yahoo syndication carries the full
+  text. Keep the citation either way.
 
 ## Non-negotiables
 
@@ -126,9 +153,18 @@ CONFIRMED.
   badly framed, correct the card itself. Don't leave it standing and park the correction in
   the gaps box. Git is the history: the commit message says what changed and why, and
   `git log -p digest.html` shows the old text. The gaps box is for what is still open or
-  unverified, so remove items from it once they are resolved. The instructional comment block,
-  the `coverage-end` meta tag and the visible patch label are functional, and they survive
-  every regeneration.
+  unverified, so remove items from it once they are resolved. The comment block's instructions
+  and coverage line, the `coverage-end` meta tag and the visible patch label are functional,
+  and they survive every regeneration.
+- **The digest records the current state only.** What changed and why goes in the commit
+  message and the PR, never in the digest: no per-revision notes in the comment block, no
+  "(backfilled at vN)" or "until vN this file said" in a card, no "(added at vN)" in the
+  themes, and no revision-keyed paragraphs in the gaps box. The gaps box keeps three kinds of
+  item: open, unverified or single-source, and deliberately not covered. Where a correction
+  matters to a reader, for instance because a wrong date is in wide circulation, state the
+  correction and leave out the revision: "coverage dates this Sep 9; the press release is
+  Sep 3". Sourcing method that outlasts one revision goes in *Sourcing a forward extension*
+  above.
 - **Don't edit `dist/` by hand.** It is generated. Change `skills/` and rebuild.
 - **If a change would break a rule in this file, say so before making it.** Not in the commit
   message, not in the PR body after the fact — beforehand, to the maintainer, with the rule
