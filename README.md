@@ -35,7 +35,7 @@ browser. The raw URL the skills fetch is served as `text/plain`, so it shows sou
 | File | Purpose |
 | --- | --- |
 | `manifest.json` | `coverage_start`, `coverage_end`, `updated_at`, `updated_by`, `revision`. A few hundred bytes, so an agent can check freshness without pulling ~60 KB. |
-| `digest.html` | Dated, sourced chronology of AI developments, every item tagged CONFIRMED or REPORTED. Carries its own `coverage-start`/`coverage-end` meta tags and an instructional comment block for whichever agent regenerates it. |
+| `digest.html` | Sourced chronology of AI developments, each dated by when it happened rather than when it was disclosed, every item tagged CONFIRMED or REPORTED. Carries its own `coverage-start`/`coverage-end` meta tags and an instructional comment block for whichever agent regenerates it. |
 
 ## Conventions
 
