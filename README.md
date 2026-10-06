@@ -12,7 +12,7 @@ browser. The raw URL the skills fetch is served as `text/plain`, so it shows sou
 
 ## Layout
 
-```
+```text
 ├── digest.html                       the digest — the only copy, fetched live by both skills
 ├── manifest.json                     cheap freshness check; read this before the digest
 ├── index.html                        redirect to digest.html, so the Pages URL lands on it
@@ -25,7 +25,14 @@ browser. The raw URL the skills fetch is served as `text/plain`, so it shows sou
 │   │   └── github-sync.md            shared write procedure (contents API, sha as concurrency control)
 │   ├── claude/ai-news-research/SKILL.md
 │   └── grok/ai-news-research/SKILL.md
-├── scripts/build-skills.sh           skills/ → dist/
+├── .github/workflows/lint.yml         CI checks for pushes to main and pull requests
+├── .markdownlint-cli2.jsonc           Markdown lint configuration
+├── .htmlvalidate.json                HTML validation configuration
+├── scripts/
+│   ├── build-skills.sh               skills/ → dist/
+│   ├── lint.sh                       the same checks locally and in CI
+│   └── lint-digest.py                digest metadata and card checks
+├── tests/test_digest_lint.py          regression checks for the digest linter
 └── dist/
     ├── ai-news-research-claude.skill  what you upload to Claude (.skill, not .zip —
     │                                  it's what shows the "save skill" button)
@@ -78,3 +85,38 @@ bash scripts/build-skills.sh
 
 Docs and skill edits are not digest revisions: `revision` in the manifest tracks digest content
 only, so a commit like this one leaves it alone.
+
+## Linting
+
+GitHub Actions checks Markdown with markdownlint, HTML with html-validate, shell scripts
+with ShellCheck, and the digest's metadata and cards on pushes to `main` and pull requests.
+Markdown line length is unrestricted to accommodate prose and source URLs; the other
+default rules apply.
+
+Digest checks require the coverage meta tags, instructional comment, and visible patch
+label to agree with `manifest.json`, and the title, patch label, and footer to carry its
+revision. Every event card must be in a month section and have a heading, date, a consistent
+CONFIRMED/REPORTED chip, and a source link.
+
+Within each month section, the linter rejects definite chronological inversions. Ranges
+and arrows sort on their start; `early`/`mid`/`late` use the 5th/15th/25th. Bounds such as
+`by Sep 24` or `on or before Jan 13` are compared only when their ordering is certain.
+`~` dates have no defined tolerance, so their relative order is left to review. An ambiguous
+card between two definitely reversed cards does not hide the inversion.
+
+Mark whole-window summaries with `data-roundup="true"` on their `.ev` divs; these belong
+after dated events and before month-only dates such as `Mar` or `Mar (ongoing)`. An ordinary
+event can span the same window, so date spans alone never imply a roundup. Unknown date
+formats fail with a line number rather than silently bypassing the check. If coverage
+spans multiple years, add `data-year="2026"` (with the appropriate year) to each month section.
+The checks validate structure, metadata, and definite ordering; event dating, ambiguous
+ordering, corroboration, and source availability still need review.
+
+To run the same checks locally, install Node.js 22.22+ or 24.8+ (with npm), Python 3, and
+ShellCheck, then run:
+
+```bash
+bash scripts/lint.sh
+```
+
+The script downloads pinned markdownlint and html-validate CLIs via `npx` on its first run.

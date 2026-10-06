@@ -11,7 +11,7 @@ around having no X access, Grok's tells it how not to get burned by having it.
 
 Both fetch the same two files at runtime, and reading them needs no account and no token:
 
-```
+```text
 https://raw.githubusercontent.com/thomasN4/ai-news-research-skill/main/manifest.json
 https://raw.githubusercontent.com/thomasN4/ai-news-research-skill/main/digest.html
 ```
