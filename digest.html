@@ -26,7 +26,7 @@
 <meta name="coverage-start" content="2026-01-01">
 <meta name="coverage-end" content="2026-10-05">
 <meta name="compiled" content="2026-10-06">
-<title>AI Developments · Jan–Oct 2026 · Knowledge Patch (v22)</title>
+<title>AI Developments · Jan–Oct 2026 · Knowledge Patch (v23)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -92,7 +92,7 @@
 <div class="wrap">
 <header>
   <button class="theme-toggle" id="themeToggle" aria-label="Switch color theme">THEME: AUTO</button>
-  <div class="patch-label">PATCH ai-2026-digest v22 · covers 2026-01-01 → 2026-10-05 (January partial) · compiled 2026-10-06</div>
+  <div class="patch-label">PATCH ai-2026-digest v23 · covers 2026-01-01 → 2026-10-05 (January partial) · compiled 2026-10-06</div>
   <h1>AI Developments, January–October 2026</h1>
   <p class="sub">A knowledge patch covering the gap after the model's training cutoff. Primary lens:
   Zvi Mowshowitz's <em>Don't Worry About the Vase</em>, cross-checked against lab announcements and press.
@@ -113,6 +113,12 @@
     <div class="src"><a href="https://thursdai.news/releases/2026-01">ThursdAI: January recap</a><a href="https://thezvi.substack.com/archive">Zvi: archive ("Claude Coworks," Jan 13)</a></div>
   </div>
   <div class="ev">
+    <div class="head"><span class="date">Jan 8–29</span><h3>Claude Code adoption outgrows the weekly news cycle</h3><span class="chip c">CONFIRMED</span></div>
+    <p>The clearest signal of scale in this period is editorial rather than numeric. In AI #151 (Jan 15) Zvi announced that Claude Code and Cowork had come to occupy so much of each week's AI news that he was pulling them out of the weeklies entirely and giving them their own series, his stated reason being that growth was overwhelming Anthropic's servers. Three spin-off posts ran in January alone ("Claude Codes" Jan 9, "Claude Coworks" Jan 13, "Claude Codes #3" the following week) and the series continues into February. Two of the month's five weeklies are titled after it: #150 "While Claude Codes" and #151 "While Claude Coworks."</p>
+    <p>This is the origin of the capacity pressure that recurs later in this file — the June–July weekly-limit and Claude Code allocation changes are downstream of demand that was already outrunning supply in January. Separately, the Claude Code VS Code extension reached general availability around Jan 22 (single-source; the Marketplace listing corroborates existence, not the date).</p>
+    <div class="src"><a href="https://thezvi.substack.com/p/ai-151-while-claude-coworks">Zvi: AI #151</a><a href="https://thezvi.substack.com/p/ai-150-while-claude-codes">Zvi: AI #150</a><a href="https://thezvi.substack.com/sitemap/2026">Zvi: sitemap</a><a href="https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code">VS Code Marketplace</a></div>
+  </div>
+  <div class="ev">
     <div class="head"><span class="date">Jan 21–22</span><h3>Anthropic publishes Claude's constitution under CC0</h3><span class="chip c">CONFIRMED</span></div>
     <p>Anthropic released the full text of the document that shapes Claude's values and behaviour. It is training input rather than a runtime system prompt, and by Anthropic's own framing the final authority on its intentions for the model, with all other guidance meant to be consistent with it. The PDF carries a publication date of January 21; the announcement post is dated January 22. Lead authors are Amanda Askell and Joe Carlsmith, with Chris Olah, Jared Kaplan, Holden Karnofsky, "several Claude models" and other contributors credited. It is released under Creative Commons CC0 1.0 — usable by anyone for any purpose without asking.</p>
     <p>On length: Askell has described it as roughly 20,000 words. Secondhand recaps circulating a "90-page" figure are quoting a PDF rendering rather than the authors' own measure; prefer the word count. The document is explicitly scoped to mainline general-access Claude models, and Anthropic notes that some specialised models do not fully fit it — relevant to how the Fable/Mythos-tier safeguards later in this file should be read.</p>
@@ -129,12 +135,6 @@
     <p>The Commission opened a new formal investigation into X under the Digital Services Act. It covers whether X assessed and mitigated the risks of building Grok's features into the platform in the EU, including the spread of <em>"manipulated sexually explicit images, including content that may amount to child sexual abuse material."</em> The Commission said these risks <em>"seem to have materialised, exposing citizens in the EU to serious harm."</em> It also asks whether X should have sent the Commission an ad hoc risk assessment before deploying Grok's features. In parallel, the Commission widened its December 2023 proceedings against X to cover the platform's announced switch to a Grok-based recommender system. The possible breaches are of Articles 34, 35 and 42 of the DSA. Ireland's Coimisiún na Meán is associated with the case, and on February 17 Ireland's Data Protection Commission opened its own investigation of X over the same images.</p>
     <p>This was the EU's first formal action against a generative AI product in 2026, and it came through platform law, not the AI Act. The DSA reaches Grok only because X is a designated very large platform. It binds the service, not the model or its maker's other channels. The Commission has published no preliminary findings in the case through coverage-end. The Commission's own account of the imagery also gave the political push behind the AI Act's new ban on nudification systems (the May 7 card).</p>
     <div class="src"><a href="https://ec.europa.eu/commission/presscorner/detail/en/ip_26_203">European Commission (primary)</a><a href="https://www.irishtimes.com/business/2026/01/26/european-commission-opens-investigation-into-groks-nudification-feature/">Irish Times</a><a href="https://www.irishtimes.com/business/2026/02/17/dpc-investigates-x-over-potential-breaches-linked-to-nudification-of-images-via-grok/">Irish Times (DPC, Feb 17)</a></div>
-  </div>
-  <div class="ev">
-    <div class="head"><span class="date">Jan 8–29</span><h3>Claude Code adoption outgrows the weekly news cycle</h3><span class="chip c">CONFIRMED</span></div>
-    <p>The clearest signal of scale in this period is editorial rather than numeric. In AI #151 (Jan 15) Zvi announced that Claude Code and Cowork had come to occupy so much of each week's AI news that he was pulling them out of the weeklies entirely and giving them their own series, his stated reason being that growth was overwhelming Anthropic's servers. Three spin-off posts ran in January alone ("Claude Codes" Jan 9, "Claude Coworks" Jan 13, "Claude Codes #3" the following week) and the series continues into February. Two of the month's five weeklies are titled after it: #150 "While Claude Codes" and #151 "While Claude Coworks."</p>
-    <p>This is the origin of the capacity pressure that recurs later in this file — the June–July weekly-limit and Claude Code allocation changes are downstream of demand that was already outrunning supply in January. Separately, the Claude Code VS Code extension reached general availability around Jan 22 (single-source; the Marketplace listing corroborates existence, not the date).</p>
-    <div class="src"><a href="https://thezvi.substack.com/p/ai-151-while-claude-coworks">Zvi: AI #151</a><a href="https://thezvi.substack.com/p/ai-150-while-claude-codes">Zvi: AI #150</a><a href="https://thezvi.substack.com/sitemap/2026">Zvi: sitemap</a><a href="https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code">VS Code Marketplace</a></div>
   </div>
 </section>
 
@@ -1381,7 +1381,7 @@
   <p><strong>Thinner areas:</strong> October 1–5, which this file built from primaries and local press without a weekly roundup to map it, so smaller items are more likely to be missing; February and March outside the Anthropic–DoW story; platform and consumer AI (Apple aside); US state-level deployment; and compute and infrastructure deals, where the July AMD and Meta items are REPORTED one-liners and Amazon's and Microsoft's 2026 compute agreements are not covered at all. For Google: research direction under Kavukcuoglu since the August 5 reshuffle; Gemini Spark and Gemini Omni beyond their launch; enterprise and distribution deals other than Apple and Anthropic; and Gemini 4's timing (confirmed in pre-training, with no date).</p>
 </section>
 
-<footer>ai-news-research skill · knowledge patch v22 · regenerate when &gt;2 weeks stale or after major events</footer>
+<footer>ai-news-research skill · knowledge patch v23 · regenerate when &gt;2 weeks stale or after major events</footer>
 </div>
 <script>
   // Cycles auto → light → dark. "Auto" defers to prefers-color-scheme; the explicit
