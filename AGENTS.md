@@ -119,6 +119,13 @@ The order is:
 `early`/`mid`/`late <Month>` are dates, not undated — sort them as roughly the 5th, 15th and
 25th. Only a card with no day-level information at all falls to group 3.
 
+Mark whole-window roundups explicitly: `<div class="ev" data-roundup="true">`. The CI
+linter uses this marker to put them in group 2; a date span alone cannot distinguish a
+summary from an event that lasted the whole window. Ordinary event cards have no marker.
+The linter rejects definite inversions, including ones separated by an ambiguous date;
+bounded dates are compared only when the bounds prove the order, and `~` dates remain for
+human review. Unknown date formats fail rather than silently escaping the check.
+
 New months are written in order, so this mostly costs nothing. It matters when backfilling:
 an item added to a month that already exists goes at its date, not at the bottom. It applies
 to every month, published or not. If you find one out of order, re-sort it.

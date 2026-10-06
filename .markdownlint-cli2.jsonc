@@ -1,0 +1,8 @@
+{
+  "config": {
+    // Prose and source URLs are deliberately not hard-wrapped.
+    "MD013": false
+  },
+  "globs": ["**/*.md"],
+  "ignores": ["node_modules/**", "dist/**"]
+}
