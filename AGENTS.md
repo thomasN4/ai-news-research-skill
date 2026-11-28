@@ -169,8 +169,15 @@ CONFIRMED.
   archive (`trumpstruth.org/statuses/<n>`) timestamps Truth Social posts. For a page that
   changes over time, check the Wayback CDX (`web.archive.org/cdx/search/cdx?url=...`) before
   attributing live content to an earlier date.
-- **For X content, use the Grok courier.** Ask for URL, handle, UTC timestamp and verbatim text,
-  and tell Grok to mark gaps "not found" rather than reconstruct them.
+- **For an X post you have the ID of, read the mirror first.** `api.fxtwitter.com/status/<id>`
+  returns the post's text, author, `created_at`, quoted post and any Community Note as JSON,
+  and `api.fxtwitter.com/2/thread/<id>` returns the author's own thread. It is a mechanical copy,
+  so it cannot paraphrase or reconstruct. Still check `created_at` against the decoded ID.
+- **To find X posts, or to read replies, use the Grok courier.** The mirror has no search (it
+  returns 503), doesn't return other people's replies, and its timeline endpoint is unreliable.
+  Ask Grok for URL, handle, UTC timestamp and verbatim text, and tell it to mark gaps "not found"
+  rather than reconstruct them. Then read each post it names through the mirror before quoting
+  it.
 - **A 403 is bot protection, not a dead link.** `openai.com`, `axios.com`, `reuters.com`,
   `cnbc.com`, `washingtonpost.com`, `bloomberg.com`, `sec.gov`, `consilium.europa.eu`,
   `euractiv.com` and others refuse curl, and some refuse Playwright's own Chromium too. They
